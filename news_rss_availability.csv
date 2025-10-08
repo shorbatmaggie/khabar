@@ -1,0 +1,744 @@
+domain,rss,feed_url,added,notes,checked
+stuff.co.nz,Yes,https://www.stuff.co.nz/rss,X,
+abc.net.au,yes,https://www.abc.net.au/news/feed/10719986/rss.xml,,
+abcnews.go.com,yes,https://feeds.abcnews.com/abcnews/internationalheadlines,,
+abcnews.go.com,yes,https://feeds.abcnews.com/abcnews/usheadlines,,
+addisstandard.com,no,,,,x
+airforcetimes.com,yes,https://www.airforcetimes.com/arc/outboundfeeds/rss/category/news?outputType=xml,,
+ajupress.com,no,,,,x
+allafrica.com,yes,https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf,,
+almasryalyoum.com,yes,https://www.egyptindependent.com/feed/,,
+amwaj.media,no,,,,x
+aninews.in,no,https://aninews.in/rss/feed/category/national/general-news.xml,,blocks bots
+apnews.com,no,,,,x
+apollo-magazine.com,no,,,,x
+arabnews.com,yes,https://www.arabnews.com/rss.xml,,
+arabnews.com,yes,https://www.arabnews.com/cat/1/rss.xml,,
+arabnews.com,yes,https://www.arabnews.com/cat/2/rss.xml,,
+arabnews.com,yes,https://www.arabnews.com/cat/3/rss.xml,,
+arabtimesonline.com,yes,https://www.arabtimesonline.com/rssFeed/83/,,
+arabtimesonline.com,yes,https://www.arabtimesonline.com/rssFeed/77/,,
+arabtimesonline.com,yes,https://www.arabtimesonline.com/rssFeed/73/,,
+arkansasonline.com,no,,,,x
+armidaleexpress.com.au,yes,https://armidaleexpress.com.au/rss.xml,,from find_more_feeds.py
+artsy.net,yes,https://www.artsy.net/rss/news,,from find_more_feeds.py
+asia.nikkei.com,yes,https://asia.nikkei.com/rss/feed/nar?_gl=1*2clfvo*_gcl_au*MzAzNTM0MTcuMTc1MTY5MDU0Nw..*_ga*MTA5NTk5MTg3NC4xNzUxNjkwNTQ3*_ga_5H36ZEETNT*czE3NTE2OTA1NDYkbzEkZzEkdDE3NTE2OTA1NTUkajUxJGwwJGgxNzk0OTkxNTkz,,
+asiapacific.ca,yes,https://www.asiapacific.ca/feeds/asia-watch,,
+asiapacific.ca,yes,https://www.asiapacific.ca/feeds/publications/reports,,
+au.news.yahoo.com,yes,https://au.news.yahoo.com/rss,,from find_more_feeds.py
+avpress.com,no,,,,x
+azernews.az,yes,https://www.azernews.az/feed.php,,from find_more_feeds.py
+bangkokpost.com,yes,https://www.bangkokpost.com/rss/data/topstories.xml,,
+bangkokpost.com,yes,https://www.bangkokpost.com/rss/data/most-recent.xml,,
+barandbench.com,yes,https://barandbench.com/feed,,from find_more_feeds.py
+barrons.com,no,,,,x
+bbc.com,yes,https://feeds.bbci.co.uk/news/rss.xml?edition=uk,,
+bbc.com,yes,https://feeds.bbci.co.uk/news/rss.xml?edition=int,,
+bdnews24.com,no,,,,x
+benarnews.org,no,,,,x
+bernama.com,no,https://bernama.com/en/rssfeed.php,,
+blogpreston.co.uk,no,,,,x 
+blogs.lse.ac.uk,no,,,,x 
+bloomberg.com,yes,https://feeds.bloomberg.com/politics/news.rss,,
+borneobulletin.com.bn,no,,,,x 
+brecorder.com,yes,https://www.brecorder.com/feeds/latest-news,,
+bssnews.net,no,,,,x 
+business-standard.com,yes,https://www.business-standard.com/rss/latest.rss,,
+business-standard.com,yes,https://www.business-standard.com/rss/india-news-216.rss,,
+businesswire.com,no,,,,x 
+buzzfeednews.com,yes,https://www.buzzfeed.com/usnews.xml,,
+ca.finance.yahoo.com,yes,https://ca.finance.yahoo.com/?feed=rss2,,from find_more_feeds.py
+ca.movies.yahoo.com,no,,,,x 
+ca.news.yahoo.com,yes,https://ca.news.yahoo.com/rss,,from find_more_feeds.py
+cambridge.org,no,,,,x
+capitalfm.co.ke,no,,,,x
+carnegie-mec.org,no,,,,x
+carnegieendowment.org,no,,,,x
+cbc.ca,Yes,https://www.cbc.ca/webfeed/rss/rss-topstories,x,
+cbc.ca,Yes,https://www.cbc.ca/webfeed/rss/rss-world,x,
+cbc.ca,Yes,https://www.cbc.ca/webfeed/rss/rss-canada,x,
+cbc.ca,Yes,https://www.cbc.ca/webfeed/rss/rss-politics,x,
+cbc.ca,Yes,https://www.cbc.ca/webfeed/rss/rss-business,x,
+radio-canada.ca,yes,https://ici.radio-canada.ca/rss/4159,x,
+montrealgazette.com,yes,https://montrealgazette.com/feed/,x,
+centralbanking.com,yes,https://www.centralbanking.com/feeds/rss/category/central-banks/monetary-policy/international,,
+centralbanking.com,yes,https://www.centralbanking.com/feeds/rss/category/central-banks/monetary-policy/unconventional-monetary-policy,,
+centralbanking.com,yes,https://www.centralbanking.com/feeds/rss/category/regulation,,
+centralbanking.com,yes,https://www.centralbanking.com/feeds/rss/category/fintech/crypto-assets,,
+cyprus-mail.co,yes,http://cyprus-mail.com/feed/,x,
+centralwaqfcouncil.gov.in,no,,,,x
+cfr.org,no,,,,x
+channelnewsasia.com,yes,https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511,,
+channelnewsasia.com,yes,https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml,,
+chathamhouse.org,no,,,,x
+cnnmoney.com,yes,http://rss.cnn.com/rss/money_latest.rss,,
+coloradopolitics.com,yes,https://coloradopolitics.com/feed,,from find_more_feeds.py
+ctinsider.com,no,,,,x
+ctvnews.ca,yes,https://www.ctvnews.ca/rss/ctvnews-ca-top-stories-public-rss-1.822009,,
+dailyherald.com,no,,,,x 
+dailymaverick.co.za,yes,https://www.dailymaverick.co.za/dmrss,,
+dailyo.in,no,,,,x 
+dailypioneer.com,no,,,,x
+dailyprincetonian.com,no,,,,x
+dailysabah.com,yes,https://www.dailysabah.com/rss/turkiye,,
+dailysabah.com,yes,https://www.dailysabah.com/rss/world, ,
+dailysabah.com,yes,https://www.dailysabah.com/rss/politics/legislation, ,
+dailysabah.com,yes,https://www.dailysabah.com/rss/business/finance,,
+dhakatribune.com,no,,,,x 
+digitaljournal.com,yes,https://digitaljournal.com/feed,,from find_more_feeds.py
+dw.com,yes,https://rss.dw.com/rdf/rss-en-all,,
+economictimes.indiatimes.com,yes,https://economictimes.indiatimes.com/news/rssfeeds/1715249553.cms,,
+economist.com,no,,,,x 
+edgemiddleeast.com,no,,,,x 
+edition.cnn.com,yes,http://rss.cnn.com/rss/edition.rss
+cnn.com,yes,http://rss.cnn.com/rss/cnn_world.rss,x
+cnn.com,yes,http://rss.cnn.com/rss/cnn_us.rss,x
+cnn.com,yes,http://rss.cnn.com/rss/cnn_allpolitics.rss,x
+egypttoday.com,no,,,,x 
+en.radiofarda.com,no,https://en.radiofarda.com/api/,,doesnt work; 
+en.royanews.tv,no,,,,x 
+eng.kavkaz-uzel.eu,yes,https://www.eng.kavkaz-uzel.eu/articles.rss,,
+english.ahram.org.eg,no,,,,x
+english.alarabiya.net,yes,https://english.alarabiya.net/feed/rss2/en/News.xml,,blocks bots even w playwright
+english.alarabiya.net,yes,https://english.alarabiya.net/feed/rss2/en/business/energy.xml,,blocks bots even w playwright
+english.alaraby.co.uk,yes,https://english.alaraby.co.uk/feed,,from find_more_feeds.py
+english.news.cn,yes,http://www.xinhuanet.com/english/rss/chinarss.xml,,
+etfstream.com,no,,,,x
+fa-mag.com,no,,,,x
+financialexpress.com,no,,,,x
+financialtribune.com,yes,https://financialtribune.com/rss.xml,,from find_more_feeds.py
+fintechmagazine.com,no,,,,x
+fintechweekly.com,yes,https://magazine.fintechweekly.com/news.rss
+firstpost.com,yes,https://www.firstpost.com/commonfeeds/v1/mfp/rss/india.xml
+fitchratings.com,no,,,,x
+forbes.com,no,,,,x
+france24.com,yes,https://www.france24.com/en/rss,,
+france24.com,yes,https://www.france24.com/en/europe/rss,x
+france24.com,yes,https://www.france24.com/en/france/rss,x
+france24.com,yes,https://www.france24.com/en/africa/rss,x
+france24.com,yes,https://www.france24.com/en/middle-east/rss,x
+france24.com,yes,https://www.france24.com/en/americas/rss,x
+france24.com,yes,https://www.france24.com/en/asia-pacific/rss,x
+freep.com,no,,,,X
+metrotimes.com,yes,https://www.metrotimes.com/detroit/Rss.xml/feed,x
+freepressjournal.in,yes,https://freepressjournal.in/feed,,from find_more_feeds.py
+frontiersin.org,yes,https://www.frontiersin.org/news/rss,,from find_more_feeds.py
+ftadviser.com,yes,https://www.ft.com/rss/home
+gandhara.rferl.org,yes,https://gandhara.rferl.org/api/,,from find_more_feeds.py
+gazettengr.com,no,,,,x
+gdnonline.com,no,,,,x
+ghanaweb.com,no,,,,x 
+pulse.com.gh,yes,https://www.pulse.com.gh/rss,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/14-Economic%20Research%20And%20Reports/feedTitle/GlobeNewswire%20-%20Economic%20Research%20And%20Reports,,
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/85-European%20Regulatory%20News/feedTitle/GlobeNewswire%20-%20European%20Regulatory%20News,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/16-Feature%20Article/feedTitle/GlobeNewswire%20-%20Feature%20Article,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/19-Government%20News/feedTitle/GlobeNewswire%20-%20Government%20News,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/24-Law%2026%20Legal%20Issues/feedTitle/GlobeNewswire%20-%20Law%20and%20Legal%20Issues,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/28-Other%20News/feedTitle/GlobeNewswire%20-%20Other%20News,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/34-Politics/feedTitle/GlobeNewswire%20-%20Politics,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/35-Religion/feedTitle/GlobeNewswire%20-%20Religion,x
+globenewswire.com,yes,https://www.globenewswire.com/RssFeed/subjectcode/43-Technical%20Analysis/feedTitle/GlobeNewswire%20-%20Technical%20Analysis,x
+gna.org.gh,no,,,,x
+haaretz.com,yes,https://www.haaretz.com/srv/haaretz-latest-headlines
+habertusba.com,no,,,
+heraldonline.com,no,,,
+hindustantimes.com,no,,,
+houstonchronicle.com,no,,,
+hudoc.echr.coe.int,no,,,
+huffpost.com,yes,https://chaski.huffpost.com/us/auto/vertical/us-news
+huffpost.com,yes,https://chaski.huffpost.com/us/auto/vertical/women,x
+huffpost.com,yes,https://chaski.huffpost.com/us/auto/vertical/world-news,x
+huffpost.com,yes,https://chaski.huffpost.com/us/auto/vertical/religion,x
+huffpost.com,yes,ttps://chaski.huffpost.com/us/auto/vertical/politics,x
+humanresourcesonline.net,yes,https://humanresourcesonline.net/rss-feed,,from find_more_feeds.py
+i24news.tv,no,,,
+ibtimes.sg,yes,https://ibtimes.sg/rss.xml,,from find_more_feeds.py
+ilmuslimciviccoalition.org,no,,,
+indiatimes.com,no,,,
+indiatoday.in,no,,,
+inquirer.com,no,,,
+inshorts.com,no,,,
+insightplus.bakermckenzie.com,no,,,
+insuranceasia.com,yes,https://insuranceasia.com/rss.xml,,from find_more_feeds.py
+international.la-croix.com,no,,,
+international.ucla.edu,no,,,
+internationalaffairs.org.au,yes,https://internationalaffairs.org.au/feed,,from find_more_feeds.py
+islamabadpost.com.pk,yes,https://islamabadpost.com.pk/feed,,from find_more_feeds.py
+islamicity.org,no,,,
+islandernews.com,yes,http://www.islandernews.com/search/?f=rss&t=article&c=news&l=50&s=start_time&sd=desc,,from find_more_feeds.py
+itv.com,no,,,
+jdsupra.com,no,,,
+jordantimes.com,yes,https://jordantimes.com/rss-feed/45,,
+jpost.com,no,,,
+jurist.org,yes,https://www.jurist.org/news/feed/,,
+justice.gov,yes,https://www.justice.gov/news/rss?m=1,,
+kashmirwatch.com,no,,,
+kbc.co.ke,no,,,
+kitco.com,no,,,
+kurdistanhumanrights.org,yes,https://kurdistanhumanrights.org/news/feed,,from find_more_feeds.py
+lancashiretelegraph.co.uk,yes,https://www.lancashiretelegraph.co.uk/news/rss/,,from find_more_feeds.py
+latestly.com,yes,https://latestly.com/rss.xml,,from find_more_feeds.py
+law.upenn.edu,yes,https://law.upenn.edu/live/rss/news/group/news%20%26%20events/show_archived/true/max/20,,from find_more_feeds.py
+law360.com,no,,,
+lexology.com,no,,,
+libyaobserver.ly,no,,,
+lifestyle.thecable.ng,no,,,
+livemint.com,yes,https://www.livemint.com/rss/politics,x
+livemint.com,yes,https://www.livemint.com/rss/science,x
+livemint.com,yes,https://www.livemint.com/rss/industry,x
+livemint.com,yes,https://www.livemint.com/rss/education,x
+livemint.com,yes,https://www.livemint.com/rss/news,x
+livemint.com,yes,https://www.livemint.com/rss/AI,x
+livemint.com,yes,https://www.livemint.com/rss/elections,x
+livemint.com,yes,https://www.livemint.com/rss/money,x
+loc.gov,yes,https://loc.gov/blog/feed,,from find_more_feeds.py
+m.realnoevremya.com,no,,,
+malaymail.com,no,,,
+malaysia.news.yahoo.com,no,,,
+malaysiagazette.com,no,,,
+malaysiakini.com,yes,https://malaysiakini.com/rss/en/news.rss,,from find_more_feeds.py
+manilatimes.net,yes,https://manilatimes.net/blog/feed,,from find_more_feeds.py
+media.un.org,yes,https://media.un.org/?feed=rss2,,from find_more_feeds.py
+memri.org,no,,,
+menafn.com,no,,,
+mha.gov.sg,no,,,
+microcapital.org,no,,,
+middleeastmonitor.com,no,,,
+milligazette.com,no,,,
+modernghana.com,no,,,
+monitor.co.ug,no,,,
+motawif.com.sa,no,,,
+msn.com,no,,,
+mynorthwest.com,yes,https://mynorthwest.com/feed,,from find_more_feeds.py
+nailahdean.com,no,,,
+nairobinews.nation.co.ke,no,,,
+nation.africa,no,,,
+nation.com.pk,no,,,
+nationalgeographic.com,no,,,,x,
+nationaltoday.com,no,,,
+ncronline.org,no,,,
+newarab.com,yes,https://newarab.com/feed,,from find_more_feeds.py
+news.bloomberglaw.com,no,,,
+news.bloombergtax.com,no,,,
+news.nab.com.au,no,,,,x
+news.un.org,yes,https://news.un.org/feed/subscribe/en/news/topic/law-and-crime-prevention/feed/rss.xml,,
+news.un.org,yes,https://news.un.org/feed/subscribe/en/news/all/rss.xml,x
+news.un.org,yes,https://news.un.org/feed/subscribe/en/news/topic/human-rights/feed/rss.xml,x
+news.un.org,yes,https://news.un.org/feed/subscribe/en/news/topic/women/feed/rss.xml,x
+news.un.org,yes,https://news.un.org/feed/subscribe/en/news/topic/migrants-and-refugees/feed/rss.xml,x
+news.yahoo.com,yes,https://news.yahoo.com/rss,,from find_more_feeds.py
+newshub.co.nz,no,,,
+newstimes.com,no,,,
+newvision.co.ug,no,,,
+nigeriansketch.com,no,,,
+nippon.com,yes,https://www.nippon.com/en/rss-others/news.xml,,
+njmmanews.com,no,,,
+noandt.com,no,,,
+northjersey.com,no,,,
+npr.org,yes,https://feeds.npr.org/1001/rss.xml,,
+ny1.com,no,,,
+nzherald.co.nz,no,,,
+oic-oci.org,no,,,
+oklahoman.com,no,,,
+oneindia.com,no,,,
+onmanorama.com,no,,,
+opb.org,no,,,
+opendemocracy.net,no,,,
+outlookindia.com,no,,,
+palatinate.org.uk,no,,,
+papers.ssrn.com,no,,,
+pbs.org,Yes,https://www.pbs.org/newshour/feeds/rss/headlines,,
+philstar.com,no,,,
+pinsentmasons.com,yes,https://www.pinsentmasons.com/shared-content/rss-feed/outlaw,x,
+portal.shariasource.com,no,,,
+pressreader.com,no,,,
+presstories.com,no,,,
+presstv.ir,yes,https://presstv.ir/rss.xml,,from find_more_feeds.py
+prnewswire.com,no,,,,x
+punchng.com,no,,,
+qna.org.qa,no,,,
+raajje.mv,no,,,
+radionigeria.gov.ng,no,,,
+realitytitbit.com,no,,,
+realnoevremya.com,no,,,,x
+reliefweb.int,no,,,
+religionunplugged.com,yes,http://religionunplugged.com/news/?format=rss,,from find_more_feeds.py
+republicworld.com,no,,,,x
+researchandmarkets.com,no,,,
+reuters.com,no,,,
+rfa.org,no,,,
+rit.edu,yes,https://press.rit.edu/feed/,,from find_more_feeds.py
+rsis.edu.sg,no,,,,x
+saharareporters.com,yes,https://saharareporters.com/rss.xml,,from find_more_feeds.py
+samaa.tv,no,,,
+samaaenglish.tv,no,,,
+saudigazette.com.sa,no,,,
+sbs.com.au,yes,https://sbs.com.au/news/feed,,from find_more_feeds.py
+sfchronicle.com,no,,,
+sg.news.yahoo.com,yes,https://sg.news.yahoo.com/rss,,from find_more_feeds.py
+sharjah24.ae,no,,,
+sinardaily.my,yes,https://www.sinardaily.my/rssFeed/316/525,x,
+sinardaily.my,yes,https://www.sinardaily.my/rssFeed/318/283,x
+singaporelawwatch.sg,yes,https://singaporelawwatch.sg/Portals/0/RSS/SuperFeed.xml,,from find_more_feeds.py
+slate.com,no,,,
+slguardian.org,no,,,
+sowetanlive.co.za,no,,,,x
+spectator.co.uk,no,,,
+spectrumlocalnews.com,no,,,
+spglobal.com,no,,,
+standardmedia.co.ke,no,,,
+state.gov,yes,https://www.state.gov/rss-feed/east-asia-and-the-pacific/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/europe-and-eurasia/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/international-organizations/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/near-east/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/population-refugees-and-migration/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/south-and-central-asia/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/western-hemisphere/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/womens-issues/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/collected-department-releases/feed/,,
+state.gov,yes,https://www.state.gov/rss-feed/democracy-human-rights-and-labor/feed/,,
+straitstimes.com,yes,https://straitstimes.com/rss.xml,,from find_more_feeds.py
+streetinsider.com,no,,,
+stripes.com,no,,,
+supremecourt.gov,no,,,
+swissinfo.ch,no,,,
+tbsnews.net,yes,https://tbsnews.net/rss.xml,,from find_more_feeds.py
+tehrantimes.com,yes,https://tehrantimes.com/rss,,from find_more_feeds.py
+texastribune.org,no,,,
+the-star.co.ke,no,,,
+theadviser.com.au,no,,,,x
+thearabweekly.com,no,,,
+thebanker.com,no,,,
+thecable.ng,no,,,
+theconversation.com,no,,,
+thecrimson.com,no,,,
+thedailystar.net,yes,https://thedailystar.net/rss.xml,,from find_more_feeds.py
+theedgemalaysia.com,no,,,
+theedgemarkets.com,no,,,
+theedgesingapore.com,no,,,
+thefridaytimes.com,no,,,
+theglobeandmail.com,yes,https://feeds.simplecast.com/TGclX98p,,from find_more_feeds.py
+thehindu.com,yes,https://www.thehindu.com/news/feeder/default.rss,,from find_more_feeds.py
+thejakartapost.com,no,,,
+thelily.com,no,,,
+thelocal.de,yes,https://feeds.thelocal.com/rss/builder/de,,from find_more_feeds.py
+themalaysianreserve.com,no,,,
+themessenger.com,no,,,
+themoscowtimes.com,yes,https://www.themoscowtimes.com/rss/news,,from find_more_feeds.py
+thenationalnews.com,no,,,,x
+thenationonlineng.net,yes,https://thenationonlineng.net/?feed=rss2,,from find_more_feeds.py
+thenews.com.pk,no,,,
+thepeninsulaqatar.com,no,,,
+theprint.in,no,,,
+thestar.com.my,no,,,
+thesun.my,no,,,
+thetandd.com,no,,,
+thetelegraphandargus.co.uk,yes,https://www.thetelegraphandargus.co.uk/news/rss/,,from find_more_feeds.py
+thetimes.co.uk,no,,,,x
+theweek.in,no,,,
+thomsonreuters.com,no,,,
+timesnownews.com,no,,,
+timesofindia.indiatimes.com,yes,https://timesofindia.indiatimes.com/?feed=rss2,,from find_more_feeds.py
+timesofoman.com,yes,https://timesofoman.com/feed,,from find_more_feeds.py
+today.law.harvard.edu,no,,,
+tolonews.com,yes,https://tolonews.com/rss.xml,,from find_more_feeds.py
+townsvillebulletin.com.au,no,,,
+tribune.com.pk,yes,https://tribune.com.pk/blog/feed,,from find_more_feeds.py
+tribune.com.pk,yes,https://tribune.com.pk/feed/pakistan,x
+tribuneindia.com,no,,,
+trtworld.com,no,,,,x
+uab.edu,no,,,
+ucanews.com,no,,,
+ugandaradionetwork.net,no,,,
+uk.movies.yahoo.com,no,,,
+un.org,yes,https://un.org/rss.xml,,from find_more_feeds.py
+usatoday.com,no,,,
+usnews.com,no,,,
+vanguardngr.com,no,,,
+vice.com,no,,,
+voi.id,yes,https://voi.id/rss,,from find_more_feeds.py
+washingtonpost.com,Yes,https://feeds.washingtonpost.com/rss/national,,
+washingtonpost.com,Yes,https://feeds.washingtonpost.com/rss/world,,
+washingtontimes.com,no,,,
+wealthbriefing.com,no,,,
+wellandgood.com,yes,https://legacy.wellandgood.com/feed/,,from find_more_feeds.py
+wfmz.com,no,,,,x
+wgbh.org,no,,,,x
+whio.com,no,,,
+wilsoncenter.org,no,,,
+wionews.com,no,,,
+wisconsinmuslimjournal.org,yes,https://wisconsinmuslimjournal.org/?feed=atom,,from find_more_feeds.py
+wmtw.com,no,,,
+wng.org,yes,https://wng.org/rss.xml,,from find_more_feeds.py
+worldcrunch.com,no,,,
+wsj.com,no,,,
+wsws.org,yes,https://www.wsws.org/rss/en.xml,,from find_more_feeds.py
+www1.cbn.com,yes,https://www1.cbn.com/rss.xml,,from find_more_feeds.py
+www3.nhk.or.jp,no,,,
+5pillarsuk.com,yes,http://5pillarsuk.com/feed,,
+advocate.com,yes,http://advocate.com/feeds/feed.rss,,
+afintl.com,yes,http://afintl.com/feed,,
+africa.businessinsider.com,yes,http://africa.businessinsider.com/rss,,
+agbi.com,yes,http://agbi.com/feed,,
+airdrietoday.com,yes,http://airdrietoday.com/rss,,
+al-monitor.com,yes,http://al-monitor.com/feed,,
+al24news.com,yes,https://al24news.dz/feed/,,
+alextimes.com,yes,http://alextimes.com/feed,,
+alhakam.org,yes,http://alhakam.org/feed,,
+aljazeera.com,yes,http://aljazeera.com/rss,,
+alkhaleejtoday.co,yes,http://alkhaleejtoday.co/rss,,
+almuqawim.net,yes,http://almuqawim.net/feed,,
+altmuslimah.com,yes,http://altmuslimah.com/feed,,
+amnesty.org,yes,https://www.amnesty.org/en/feed/,,
+amnesty.org.au,yes,http://amnesty.org.au/feed,,
+amsterdamnews.com,yes,http://amsterdamnews.com/feed,,
+amu.tv,yes,http://amu.tv/feed,,
+anba.com.br,yes,http://anba.com.br/feed,,
+anfenglish.com,yes,http://anfenglish.com/feed,,
+aol.com,yes,https://www.aol.com/rss-index.xml,,
+app.com.pk,yes,http://app.com.pk/feed,,
+arabianbusiness.com,yes,http://arabianbusiness.com/feed,,
+ariananews.af,yes,http://ariananews.af/feed,,
+arynews.tv,yes,http://arynews.tv/feed,,
+asianews.it,yes,https://www.asianews.it/it.xml,,
+asiatimes.com,yes,http://asiatimes.com/feed,,
+asumetech.com,yes,http://asumetech.com/feed,,
+atalayar.com,yes,http://atalayar.com/feed,,
+azinlikca1.net,yes,http://azinlikca1.net/feed,,
+bakhtarnews.af,yes,http://bakhtarnews.af/feed,,
+beachgrit.com,yes,http://beachgrit.com/feed,,
+bedfordandbowery.com,yes,http://bedfordandbowery.com/feed,,
+beincrypto.com,yes,http://beincrypto.com/feed,,
+besacenter.org,yes,http://besacenter.org/feed,,
+bizcommunity.com,yes,https://www.bizcommunity.com/rss/196/1.html,,
+blockchainreporter.net,yes,http://blockchainreporter.net/feed,,
+blueprint.ng,yes,http://blueprint.ng/feed,,
+business2community.com,yes,http://business2community.com/feed,,
+businessinsider.com,yes,http://businessinsider.com/rss,,
+businesstoday.in,yes,http://businesstoday.in/feed,,
+calcoasttimes.com,yes,http://calcoasttimes.com/feed,,
+canadianunderwriter.ca,yes,http://canadianunderwriter.ca/feed,,
+capitolnewsillinois.com,yes,http://capitolnewsillinois.com/feed,,
+cardinalpointsonline.com,yes,http://cardinalpointsonline.com/feed,,
+cbsnews.com,yes,https://www.cbsnews.com/latest/rss/main,,
+celebritynetworth.com,yes,http://celebritynetworth.com/feed,,
+cha-shc.ca,yes,http://cha-shc.ca/feed,,
+chiangraitimes.com,yes,http://chiangraitimes.com/feed,,
+chicagotribune.com,yes,http://chicagotribune.com/feed,,
+china-briefing.com,yes,http://china-briefing.com/feed,,
+christianitytoday.com,yes,http://christianitytoday.com/feed,,
+cilisos.my,yes,http://cilisos.my/feed,,
+cityam.com,yes,http://cityam.com/feed,,
+codeblue.galencentre.org,yes,http://codeblue.galencentre.org/feed,,
+cointelegraph.com,yes,http://cointelegraph.com/feed,,
+consultancy-me.com,yes,https://www.consultancy-me.com/rss/consultancy_rssfeed.xml,,
+courthousenews.com,yes,http://courthousenews.com/feed,,
+crisisgroup.org,yes,http://crisisgroup.org/rss,,
+dabangasudan.org,yes,http://dabangasudan.org/feed,,
+dailycaller.com,yes,http://dailycaller.com/feed,,
+dailymail.co.uk,yes,https://www.dailymail.co.uk/ushome/index.rss,,
+dailynewsegypt.com,yes,http://dailynewsegypt.com/feed,,
+dailypost.ng,yes,http://dailypost.ng/feed,,
+dailypress.com,yes,http://dailypress.com/feed,,
+dailyrecord.co.uk,yes,http://dailyrecord.co.uk/rss.xml,,
+dailytrust.com,yes,http://dailytrust.com/feed,,
+dawn.com,yes,http://dawn.com/feed,,
+deccanchronicle.com,yes,https://www.deccanchronicle.com/google_feeds.xml,,
+deccanherald.com,yes,http://deccanherald.com/feed,,
+deseret.com,yes,https://www.deseret.com/rss/latest.rss,,
+devdiscourse.com,yes,http://www.devdiscourse.com/rss/website,,
+dohanews.co,yes,http://dohanews.co/feed,,
+e-noticies.cat,yes,https://e-noticies.cat/rss/last-posts,,
+ecfr.eu,yes,http://ecfr.eu/feed,,
+economicconfidential.com,yes,http://economicconfidential.com/feed,,
+economymiddleeast.com,yes,http://economymiddleeast.com/feed,,
+egyptianstreets.com,yes,http://egyptianstreets.com/feed,,
+egyptindependent.com,yes,http://egyptindependent.com/feed,,
+einnews.com,yes,http://einnews.com/rss,,
+emirates247.com,yes,http://emirates247.com/cmlink/mobile-varieties-1.708781,,
+en.abna24.com,yes,http://en.abna24.com/rss,,
+en.antaranews.com,yes,https://en.antaranews.com/rss/current-issue.xml,x,
+en.chessbase.com,yes,http://en.chessbase.com/feed,,
+en.mehrnews.com,yes,http://en.mehrnews.com/rss,,
+en.trend.az,yes,http://en.trend.az/rss,,
+endpts.com,yes,http://endpts.com/feed,,
+english.aawsat.com,yes,http://english.aawsat.com/feed,,
+english.elpais.com,yes,https://feeds.elpais.com/mrss-s/pages/ep/site/english.elpais.com/portada,,
+english.enabbaladi.net,yes,http://english.enabbaladi.net/feed,,
+english.mathrubhumi.com,yes,https://sitemap.mpp.atexcloud.io/sitemaps/mathrubhumien/rss,,
+etedge-insights.com,yes,http://etedge-insights.com/feed,,
+eurasianet.org,yes,http://eurasianet.org/rss,,
+eurasiareview.com,yes,http://eurasiareview.com/feed,,
+euronews.com,yes,http://euronews.com/rss,,
+fanack.com,yes,http://fanack.com/feed,,
+fastcompany.com,yes,http://fastcompany.com/rss,,
+fesnews.media,yes,http://fesnews.media/feed,,
+ffnews.com,yes,http://ffnews.com/feed,,
+fides.org,yes,http://fides.org/rss,,
+fintech.global,yes,http://fintech.global/feed,,
+fintechnews.sg,yes,http://fintechnews.sg/feed,,
+foodtank.com,yes,http://foodtank.com/feed,,
+foreignpolicy.com,yes,http://foreignpolicy.com/feed,,
+forkast.news,yes,http://forkast.news/feed,,
+fortune.com,yes,http://fortune.com/feed,,
+forum18.org,yes,http://forum18.org/syndication/forum18.xml,,
+foxnews.com,yes,http://foxnews.com/rss,,
+freemalaysiatoday.com,yes,https://www.freemalaysiatoday.com/feeds/atom/headlines,,
+ft.com,yes,https://www.ft.com/rss/home,,
+fulcrum.sg,yes,http://fulcrum.sg/feed,,
+futurism.com,yes,http://futurism.com/feed,,
+g2g.news,yes,http://g2g.news/feed,,
+gbnews.com,yes,http://gbnews.com/feeds/feed.rss,,
+getreligion.org,yes,https://www.getreligion.org/getreligion?format=rss,,
+gfmag.com,yes,http://gfmag.com/feed,,
+globalcirculate.com,yes,http://globalcirculate.com/feed,,
+globalnation.inquirer.net,yes,http://globalnation.inquirer.net/feed,,
+growthbusiness.co.uk,yes,http://growthbusiness.co.uk/feed,,
+guardian.ng,yes,http://guardian.ng/feed,,
+gulfnews.com,yes,http://gulfnews.com/feed,,
+himalmag.com,yes,http://himalmag.com/feed,,
+hoover.org,yes,http://hoover.org/feed,,
+hrw.org,yes,http://hrw.org/rss,,
+hype.my,yes,http://hype.my/feed,,
+hyphenonline.com,yes,http://hyphenonline.com/feed,,
+ibsintelligence.com,yes,http://ibsintelligence.com/feed,,
+icrc.org,yes,http://icrc.org/en/rss/general,,
+illinoisnewsroom.org,yes,http://illinoisnewsroom.org/feed,,
+independent.co.ug,yes,http://independent.co.ug/feed,,
+independent.co.uk,yes,http://independent.co.uk/rss,,
+indiaherald.com,yes,http://indiaherald.com/rss,,
+indianarrative.com,no,http://indianarrative.com/feed,,has captcha
+indianexpress.com,yes,http://indianexpress.com/feed,,
+indiatvnews.com,yes,https://api.indiatvnews.com/v3/en/gp7naGtJSQrs9oi/rss/topstory,,
+indonesiaatmelbourne.unimelb.edu.au,yes,http://indonesiaatmelbourne.unimelb.edu.au/feed,,
+indonewyork.com,yes,http://indonewyork.com/feed,,
+inews.co.uk,yes,http://inews.co.uk/feed,,
+insider.com,yes,http://insider.com/rss,,
+insidethegames.biz,yes,http://insidethegames.biz/feed,,
+intpolicydigest.org,yes,http://intpolicydigest.org/feed,,
+investmentexecutive.com,yes,http://investmentexecutive.com/feed,,
+iol.co.za,yes,http://iol.co.za/rss,,
+iqna.ir,yes,http://iqna.ir/fa/rss/allnews,,
+iranintl.com,yes,http://iranintl.com/feed,,
+iranpresswatch.org,yes,http://iranpresswatch.org/feed,,
+iranwire.com,yes,http://iranwire.com/feed,,
+isils.net,yes,http://isils.net/feed,,
+islam21c.com,yes,http://islam21c.com/feed,,
+islamicfinanceguru.com,yes,http://islamicfinanceguru.com/feed,,
+islamicstudies.harvard.edu,yes,http://islamicstudies.harvard.edu/feed,,
+isthmus.com,yes,https://isthmus.com/api/rss/content.rss,,
+japantimes.co.jp,yes,http://japantimes.co.jp/feed,,
+jns.org,yes,http://jns.org/feed,,
+kashmirobserver.net,yes,http://kashmirobserver.net/feed,,
+kdvr.com,yes,http://kdvr.com/feed,,
+kenyans.co.ke,yes,https://www.kenyans.co.ke/feeds/news,,
+kenyoncollegian.com,yes,http://kenyoncollegian.com/feed,,
+kfgo.com,yes,http://kfgo.com/feed,,
+khaama.com,yes,http://khaama.com/feed,,
+khaleejtimes.com,yes,https://www.khaleejtimes.com/api/v1/collections/top-section.rss,,
+khmertimeskh.com,yes,http://khmertimeskh.com/feed,,
+ktvq.com,yes,https://www.ktvq.com/index.rss,,
+ktvz.com,yes,https://ktvz.com/comments/feed/,,
+kupi.or.id,yes,http://kupi.or.id/feed,,
+laprensalatina.com,yes,http://laprensalatina.com/feed,,
+latimes.com,yes,https://www.latimes.com/index.rss,,
+latintimes.com,yes,http://latintimes.com/rss,,
+law.asia,yes,http://law.asia/feed,,
+law.nd.edu,yes,http://law.nd.edu/news-events/news.atom,,
+lawtimesnews.com,yes,http://lawtimesnews.com/rss,,
+lawtrend.in,yes,http://lawtrend.in/feed,,
+leadership.ng,yes,http://leadership.ng/feed,,
+ledgerinsights.com,yes,http://ledgerinsights.com/feed,,
+livelaw.in,yes,https://www.livelaw.in/google_feeds.xml,,
+losangelesblade.com,yes,http://losangelesblade.com/feed,,
+lpm.org,yes,https://www.lpm.org/index.rss,,
+macaubusiness.com,yes,http://macaubusiness.com/rss,,has captcha
+malaysianow.com,yes,http://malaysianow.com/feed,,
+martinsvillebulletin.com,yes,http://martinsvillebulletin.com/search/?f=rss&t=article&l=50&s=start_time&sd=desc&k%5B%5D=%23topstory,,
+medium.datadriveninvestor.com,yes,http://medium.datadriveninvestor.com/feed,,
+medyascope.tv,yes,http://medyascope.tv/feed,,
+mg.co.za,yes,http://mg.co.za/feed,,
+middleeasteye.net,yes,http://middleeasteye.net/rss,,
+middleeastheadlines.com,yes,http://middleeastheadlines.com/feed,,
+mindanews.com,yes,http://mindanews.com/feed,,
+mmnews.tv,yes,http://mmnews.tv/feed,,
+moderndiplomacy.eu,yes,http://moderndiplomacy.eu/feed,,
+moderntokyotimes.com,yes,http://moderntokyotimes.com/feed,,
+moroccoworldnews.com,yes,http://moroccoworldnews.com/feed,,
+mosaicmagazine.com,yes,http://mosaicmagazine.com/feed,,
+mpamag.com,yes,http://mpamag.com/rss,,
+muslim.co,yes,http://muslim.co/feed,,
+muslimgirl.com,yes,http://muslimgirl.com/feed,,
+myjoyonline.com,yes,http://myjoyonline.com/feed,,
+mystartupworld.com,yes,http://mystartupworld.com/feed,,
+nationalheraldindia.com,yes,http://nationalheraldindia.com/feed,,
+nationalinterest.org,yes,http://nationalinterest.org/feed,,
+nationalpost.com,yes,http://nationalpost.com/feed,,
+natlawreview.com,yes,http://natlawreview.com/feed,,
+nbcnews.com,yes,http://nbcnews.com/feed,,
+ndtv.com,yes,https://feeds.feedburner.com/NDTV-LatestNews,,
+ned.org,yes,http://ned.org/feed,,
+newindianexpress.com,yes,http://newindianexpress.com/feed,,
+newlinesinstitute.org,yes,http://newlinesinstitute.org/feed,,
+newlinesmag.com,yes,http://newlinesmag.com/feed,,
+news.artnet.com,yes,http://news.artnet.com/feed,,
+news.asu.edu,yes,http://news.asu.edu/rss,,
+news.bitcoin.com,yes,http://news.bitcoin.com/feed,,
+news.fiu.edu,yes,http://news.fiu.edu/feed,,
+news.mongabay.com,yes,http://news.mongabay.com/feed,,
+news18.com,yes,https://www.news18.com/commonfeeds/v1/eng/rss/text.xml,,
+news9live.com,yes,https://www.news9live.com/feedapi/latest-news/,,
+newsbtc.com,yes,http://newsbtc.com/feed,,
+newsday.com,yes,https://www.newsday.com/api/rss/recent,,
+newser.com,yes,http://rss.newser.com/rss/section/1.rss,,
+newsinfo.inquirer.net,yes,http://newsinfo.inquirer.net/feed,,
+newsmantraa.us,yes,http://newsmantraa.us/feed,,
+newsweek.com,yes,http://newsweek.com/rss,,
+newyorkdailygazette.com,yes,http://newyorkdailygazette.com/feed,,
+newyorker.com,yes,https://www.newyorker.com/feed/rss,,
+nj.com,yes,https://www.nj.com/arc/outboundfeeds/rss/?outputType=xml,,
+nst.com.my,yes,http://nst.com.my/feed,,
+nydailynews.com,yes,http://nydailynews.com/feed,,
+nypost.com,yes,http://nypost.com/feed,,
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml,,
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Americas.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/AsiaPacific.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Business.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Education.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/NYRegion.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Obituaries.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Politics.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/World.xml,x
+nytimes.com,yes,https://rss.nytimes.com/services/xml/rss/nyt/Africa.xml,x
+oasismagazine.com.ng,yes,http://oasismagazine.com.ng/feed,,
+ocregister.com,yes,http://ocregister.com/feed,,
+oodaloop.com,yes,http://oodaloop.com/feed,,
+opindia.com,yes,http://opindia.com/feed,,
+organiser.org,yes,http://organiser.org/feed,,
+ottomanhistorypodcast.com,yes,http://ottomanhistorypodcast.com/atom.xml,,
+outono.net,yes,http://outono.net/feed,,
+pakistantoday.com.pk,yes,http://pakistantoday.com.pk/feed,,
+pakobserver.net,yes,http://pakobserver.net/feed,,
+paloaltoonline.com,yes,http://paloaltoonline.com/feed,,
+panaynews.net,yes,http://panaynews.net/feed,,
+persecution.org,yes,http://persecution.org/feed,,
+pexels.com,yes,http://pexels.com/rss,,
+philly.eater.com,yes,http://philly.eater.com/rss/index.xml,,
+pittsburgh.cbslocal.com,yes,https://www.cbsnews.com/latest/rss/main,,
+pmexpressng.com,yes,http://pmexpressng.com/feed,,
+pmnewsnigeria.com,yes,http://pmnewsnigeria.com/feed,,
+politicalscience.nd.edu,yes,http://politicalscience.nd.edu/news-and-events/news.atom,,
+politico.eu,yes,http://politico.eu/feed,,
+politicosl.com,yes,https://politicosl.com/rss.xml,,
+post-gazette.com,yes,http://post-gazette.com/rss,,
+premiumtimesng.com,yes,http://premiumtimesng.com/feed,,
+press.un.org,yes,http://press.un.org/feed,,
+property118.com,yes,http://property118.com/rss,,
+psnews.com.au,yes,http://psnews.com.au/feed,,
+publicsource.org,yes,http://publicsource.org/feed,,
+rappler.com,yes,http://rappler.com/feed,,
+reason.com,yes,http://reason.com/feed,,
+religionnews.com,yes,http://religionnews.com/feed,,
+reprieve.org,yes,http://reprieve.org/feed,,
+reproductiverights.org,yes,http://reproductiverights.org/feed,,
+restofworld.org,yes,http://restofworld.org/feed,,
+rewirenewsgroup.com,yes,http://rewirenewsgroup.com/feed,,
+rferl.org,yes,http://rferl.org/api/,,
+rrg.sg,yes,http://rrg.sg/feed,,
+rt.com,yes,http://rt.com/feed,,
+sabrangindia.in,yes,http://sabrangindia.in/feed,,
+salaamgateway.com,yes,http://salaamgateway.com/feed,,
+salon.com,yes,http://salon.com/feed,,
+scmp.com,yes,https://www.scmp.com/rss/feed,,
+scoopempire.com,yes,http://scoopempire.com/feed,,
+see.news,yes,http://see.news/rss,,
+sentinelassam.com,yes,http://sentinelassam.com/feed,,
+shanghai.ist,yes,http://shanghai.ist/feed,,
+siasat.com,yes,http://siasat.com/feed,,
+skynewsarabia.com,yes,http://skynewsarabia.com/rss.xml,,
+sltrib.com,yes,https://www.sltrib.com/arc/outboundfeeds/rss/?outputType=xml,,
+specialeurasia.com,yes,http://specialeurasia.com/feed,,
+sportbible.com,yes,https://www.sportbible.com/index.rss,,
+sputniknews.com,yes,https://sputnikglobe.com/export/rss2/archive/index.xml,,
+standard.co.uk,yes,http://standard.co.uk/rss,,
+startribune.com,yes,http://startribune.com/rss,,
+stcloudlive.com,yes,https://www.stcloudlive.com/index.rss,,
+stuff.co.nz,yes,http://stuff.co.nz/feed,,
+sunnewsonline.com,yes,http://sunnewsonline.com/feed,,
+sunstar.com.ph,yes,http://sunstar.com.ph/feed,,
+swarajyamag.com,yes,http://swarajyamag.com/feed,,
+tech.eu,yes,http://tech.eu/feed,,
+techcrunch.com,yes,http://techcrunch.com/feed,,
+techradar.com,yes,http://techradar.com/rss,,
+techwireasia.com,yes,http://techwireasia.com/feed,,
+telegrafi.com,yes,http://telegrafi.com/feed,,
+telegraph.co.uk,yes,http://telegraph.co.uk/rss,,blocks bots
+tennesseelookout.com,yes,http://tennesseelookout.com/feed,,
+thearcticinstitute.org,yes,http://thearcticinstitute.org/feed,,
+theborneopost.com,yes,http://theborneopost.com/feed,,
+thecairoreview.com,yes,http://thecairoreview.com/feed,,
+thecollegepost.com,yes,http://thecollegepost.com/feed,,
+thecritic.co.uk,yes,http://thecritic.co.uk/feed,,
+thediplomat.com,yes,http://thediplomat.com/feed,,
+theeagleonline.com.ng,yes,http://theeagleonline.com.ng/feed,,
+thefederal.com,yes,http://thefederal.com/feed,,
+thefintechtimes.com,yes,http://thefintechtimes.com/feed,,
+theguardian.com,yes,http://theguardian.com/rss,,
+thehill.com,yes,http://thehill.com/feed,,
+thehindustangazette.com,yes,http://thehindustangazette.com/feed,,
+thekashmirimages.com,yes,http://thekashmirimages.com/feed,,
+thelocal.fr,yes,https://feeds.thelocal.com/rss/builder/fr,,
+themarkaz.org,yes,http://themarkaz.org/feed,,
+themedialine.org,yes,http://themedialine.org/feed,,
+thenewhumanitarian.org,yes,http://thenewhumanitarian.org/feed,,
+thenigerialawyer.com,yes,http://thenigerialawyer.com/feed,,
+thequint.com,yes,http://thequint.com/feed,,
+thestar.co.uk,yes,http://thestar.co.uk/rss,,
+thetealmango.com,yes,http://thetealmango.com/feed,,
+thetimeshub.in,yes,http://thetimeshub.in/feed,,
+thevibes.com,yes,http://thevibes.com/rss,,
+theweek.co.uk,yes,http://theweek.co.uk/rss,,
+theweek.com,yes,http://theweek.com/rss,,
+thisdaylive.com,yes,http://thisdaylive.com/feed,,
+time.com,yes,http://time.com/feed,,
+timesofisrael.com,yes,http://timesofisrael.com/feed,,
+tmj4.com,yes,https://www.tmj4.com/index.rss,,
+tntribune.com,yes,http://tntribune.com/feed,,
+today.thefinancialexpress.com.bd,yes,http://today.thefinancialexpress.com.bd/feed,,
+torontosun.com,yes,http://torontosun.com/feed,,
+tribune.net.ph,yes,http://tribune.net.ph/feed,,
+tribuneonlineng.com,yes,http://tribuneonlineng.com/feed,,
+tucson.com,yes,https://tucson.com/search/?f=rss&t=article&l=50&s=start_time&sd=desc&k%5B%5D=%23topstory,,
+tulsaworld.com,yes,http://tulsaworld.com/search/?f=rss&t=article&l=50&s=start_time&sd=desc&k%5B%5D=%23topstory,,
+turkishminute.com,yes,http://turkishminute.com/feed,,
+tvcnews.tv,yes,http://tvcnews.tv/feed,,
+ultrairaq.ultrasawt.com,yes,http://ultrairaq.ultrasawt.com/rss.xml,,
+ummid.com,yes,https://feeds.feedburner.com/ummid,,
+universitymagazine.ca,yes,https://www.universitymagazine.ca/comments/feed/,,
+vimeo.com,yes,http://vimeo.com/atom.xml,,
+voanews.com,yes,http://voanews.com/api/,,
+voicegambia.com,yes,http://voicegambia.com/feed,,
+von.gov.ng,yes,http://von.gov.ng/feed,,
+vox.com,yes,http://vox.com/rss/index.xml,,
+vtdigger.org,yes,http://vtdigger.org/feed,,
+washingtonexaminer.com,yes,http://washingtonexaminer.com/feed,,
+wavy.com,yes,http://wavy.com/feed,,
+wbur.org,yes,http://wbur.org/feed,,
+whatech.com,yes,http://whatech.com/?sucurianticache=901907956&format=feed&type=rss,,
+worldakkam.com,yes,http://worldakkam.com/feed,,
+worldreligionnews.com,yes,http://worldreligionnews.com/feed,,
+wtop.com,yes,http://wtop.com/feed,,
+wtvbam.com,yes,http://wtvbam.com/feed,,
+yenisafak.com,yes,http://yenisafak.com/rss,,
+yorkshireeveningpost.co.uk,yes,http://yorkshireeveningpost.co.uk/rss,,
+zawya.com,yes,https://www.zawya.com/sitemaps/en/rss,,
+news.am,yes, https://news.am/eng/rss/,x ,
+trend.az,yes, https://www.trend.az/feeds/index.rss,x,
+twentyfoursevennews.com,yes, http://www.twentyfoursevennews.com/category/media/bna-bahrain-news-agency/feed/, x,
+muscatdaily.com,yes, https://www.muscatdaily.com/category/oman/feed/,x,
+loc.gov,yes, https://blogs.loc.gov/law/feed/,x
+arabictrader.com,yes, https://www.arabictrader.com/en/rss,x
