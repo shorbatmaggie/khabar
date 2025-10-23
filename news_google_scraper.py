@@ -1,9 +1,11 @@
 import html
 import csv
-import json
 import feedparser
 from dateutil import parser as dateparser
 from datetime import datetime
+from pathlib import Path
+from urllib.parse import urlparse
+from urllib.parse import parse_qs
 import requests
 import time
 import re
@@ -12,7 +14,7 @@ from bs4 import BeautifulSoup
 
 # ---------- Config ----------
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
-CSV_PATH = "/Users/maggie/Documents/PIL/news_roundup/news_google_rss_list.csv"
+CSV_PATH = Path(__file__).resolve().parent / "news_google_rss_list.csv"
 
 MAX_SNIPPET_LEN = 400
 DAYS_LIMIT = 10            
@@ -26,9 +28,12 @@ REAL_HEADERS = {
     "Connection": "keep-alive",
 }
 
-OUTPUT_JSON = f"articles_json/google_alerts_articles_{RUN_DATE}.json"
-OUTPUT_CSV = f"articles_csv/google_alerts_articles_{RUN_DATE}.csv"
-OUTPUT_ERROR_LOG = f"error_logs/google_fetch_and_parse_errors{RUN_DATE}.csv"
+BASE_DIR = Path(__file__).resolve().parent
+ARTICLES_DIR = BASE_DIR / "data/digests/google_digests"
+ERROR_DIR = BASE_DIR / "data/error_logs/google_errors"
+
+OUTPUT_CSV = ARTICLES_DIR / f"google_alerts_articles_{RUN_DATE}.csv"
+OUTPUT_ERROR_LOG = ERROR_DIR / f"google_fetch_and_parse_errors_{RUN_DATE}.csv"
 
 
 # ---------- Helpers tuned for Google Alerts ----------
@@ -256,10 +261,6 @@ def main():
     print(f"\nSuccessfully fetched {successful_feeds} out of {total_feeds} feeds.")
     print(f"Total articles (last {DAYS_LIMIT} days): {len(all_articles)}")
 
-    # Output JSON
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(all_articles, f, indent=2, ensure_ascii=False)
-
     # Output CSV
     with open(OUTPUT_CSV, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(
@@ -281,7 +282,7 @@ def main():
             writer.writerow(row)
 
     elapsed = time.perf_counter() - t0
-    print(f"\nSaved articles to {OUTPUT_JSON} and {OUTPUT_CSV}.")
+    print(f"\nSaved articles to {OUTPUT_CSV}.")
     print(f"Saved error log to {OUTPUT_ERROR_LOG}.")
     print(f"Script runtime: {elapsed:.2f} seconds ({elapsed/60:.2f} minutes)")
 
