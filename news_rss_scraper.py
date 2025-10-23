@@ -30,15 +30,15 @@ REAL_HEADERS = {
 }
 
 BASE_DIR = Path(__file__).resolve().parent
-CSV_PATH = BASE_DIR / "news_rss_availability.csv"
-KEYWORD_CSV = BASE_DIR / "news_targeted_roundup_keywords.csv"
-HARDENED_FEEDS = BASE_DIR / "news_playwright_rss_feeds.csv"
+CSV_PATH = BASE_DIR / "config/news_rss_availability.csv"
+KEYWORD_CSV = BASE_DIR / "config/news_rss_keywords.csv"
+HARDENED_FEEDS = BASE_DIR / "config/news_playwright_rss_list.csv"
 
 ARTICLES_DIR = BASE_DIR / "data/digests/rss_digests"
 ERROR_DIR = BASE_DIR / "data/error_logs/rss_errors"
 
-OUTPUT_CSV = ARTICLES_DIR / f"candidate_articles_{RUN_DATE}.csv"
-OUTPUT_ERROR_LOG = ERROR_DIR / f"rss_fetch_and_parse_errors{RUN_DATE}.csv"
+OUTPUT_CSV = ARTICLES_DIR / f"rss_articles_{RUN_DATE}.csv"
+OUTPUT_ERROR_LOG = ERROR_DIR / f"rss_fetch_and_parse_errors_{RUN_DATE}.csv"
 
 def _normalize_url(u: str) -> str:
     """Lowercase scheme/host, strip trailing slash on path (except root), keep query."""
