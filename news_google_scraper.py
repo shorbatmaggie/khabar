@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 # ---------- Config ----------
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
-CSV_PATH = Path(__file__).resolve().parent / "news_google_rss_list.csv"
+CSV_PATH = Path(__file__).resolve().parent / "config/news_google_rss_list.csv"
 
 MAX_SNIPPET_LEN = 400
 DAYS_LIMIT = 10            
