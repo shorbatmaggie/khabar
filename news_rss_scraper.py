@@ -1,7 +1,5 @@
-# roundup_rss_scraper.py
-
 import csv
-import json
+from pathlib import Path
 import feedparser
 from dateutil import parser as dateparser
 from datetime import datetime
@@ -15,14 +13,11 @@ import asyncio
 from playwright.sync_api import sync_playwright
 from urllib.parse import urlparse  
 
-
+# ---------- Config ----------
 scraper = cloudscraper.create_scraper()
-run_date = datetime.now().strftime("%Y-%m-%d")
 
+RUN_DATE = datetime.now().strftime("%Y-%m-%d")
 
-CSV_PATH = "/Users/maggie/Documents/PIL/news_roundup/news_rss_availability.csv"
-KEYWORD_CSV = "/Users/maggie/Documents/PIL/news_roundup/news_targeted_roundup_keywords.csv"
-HARDENED_FEEDS = "/Users/maggie/Documents/PIL/news_roundup/news_playwright_rss_feeds.csv"
 MAX_SNIPPET_LEN = 400
 DAYS_LIMIT = 10 # ignore old news
 MAX_ENTRIES = 200  # prevent issues with huge feeds
@@ -33,9 +28,17 @@ REAL_HEADERS = {
     "Referer": "https://www.google.com",
     "Connection": "keep-alive",
 }
-OUTPUT_JSON = f"articles_json/candidate_articles_{run_date}.json"
-OUTPUT_CSV = f"articles_csv/candidate_articles_{run_date}.csv"
-OUTPUT_ERROR_LOG = f"error_logs/fetch_and_parse_errors{run_date}.csv"
+
+BASE_DIR = Path(__file__).resolve().parent
+CSV_PATH = BASE_DIR / "news_rss_availability.csv"
+KEYWORD_CSV = BASE_DIR / "news_targeted_roundup_keywords.csv"
+HARDENED_FEEDS = BASE_DIR / "news_playwright_rss_feeds.csv"
+
+ARTICLES_DIR = BASE_DIR / "data/digests/rss_digests"
+ERROR_DIR = BASE_DIR / "data/error_logs/rss_errors"
+
+OUTPUT_CSV = ARTICLES_DIR / f"candidate_articles_{RUN_DATE}.csv"
+OUTPUT_ERROR_LOG = ERROR_DIR / f"rss_fetch_and_parse_errors{RUN_DATE}.csv"
 
 def _normalize_url(u: str) -> str:
     """Lowercase scheme/host, strip trailing slash on path (except root), keep query."""
@@ -268,10 +271,6 @@ def main():
     print(f"\nSuccessfully fetched {successful_feeds} out of {total_feeds} feeds.")
     print(f"\nTotal relevant articles found: {len(all_articles)}")
 
-    # Output JSON
-    with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
-        json.dump(all_articles, f, indent=2, ensure_ascii=False)
-
     # Output CSV
     with open(OUTPUT_CSV, "w", encoding="utf-8", newline='') as f:
         writer = csv.DictWriter(
@@ -298,7 +297,7 @@ def main():
             writer.writerow(row)
 
 
-    print(f"Saved articles to {OUTPUT_JSON} and {OUTPUT_CSV}. Saved error log to {OUTPUT_ERROR_LOG}.")
+    print(f"Saved articles to {OUTPUT_CSV}. Saved error log to {OUTPUT_ERROR_LOG}.")
 
 if __name__ == "__main__":
     _t0 = time.perf_counter()
