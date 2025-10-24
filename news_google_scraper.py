@@ -2,7 +2,7 @@ import html
 import csv
 import feedparser
 from dateutil import parser as dateparser
-from datetime import datetime
+from datetime import datetime, timedelta 
 from pathlib import Path
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
@@ -14,11 +14,10 @@ from bs4 import BeautifulSoup
 
 # ---------- Config ----------
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
-CSV_PATH = Path(__file__).resolve().parent / "config/news_google_rss_list.csv"
 
 MAX_SNIPPET_LEN = 400
-DAYS_LIMIT = 10            
-MAX_ENTRIES = 200          
+DAYS_LIMIT = 1 # ignore most old news. consider changing to 0 if there are too many duplicates in dedupe stage
+MAX_ENTRIES = 300  # prevent issues with huge feeds (not really necessary but a good precaution)      
 
 REAL_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -29,6 +28,7 @@ REAL_HEADERS = {
 }
 
 BASE_DIR = Path(__file__).resolve().parent
+CSV_PATH = BASE_DIR / "config/news_google_rss_list.csv"
 ARTICLES_DIR = BASE_DIR / "data/digests/google_digests"
 ERROR_DIR = BASE_DIR / "data/error_logs/google_errors"
 
@@ -110,11 +110,34 @@ def _iso_date(entry) -> str | None:
                 pass
     return None
 
-def _is_recent(raw_dt: str) -> bool:
+def is_recent(pubdate):
+    """
+    Keep items that are:
+      - within the past DAYS_LIMIT *calendar days* (inclusive),
+      - OR exactly one calendar day in the "future"
+    All checks are done as DATE-ONLY (no timezone normalization)
+    """
     try:
-        dt = dateparser.parse(raw_dt)
-        now = datetime.now(dt.tzinfo) if dt and dt.tzinfo else datetime.utcnow()
-        return (now - dt).days <= DAYS_LIMIT
+        # Parse whatever we get; many feeds provide date-only strings.
+        # Using .date() makes this robust to missing times/tzinfo.
+        parsed = dateparser.parse(pubdate)
+        if parsed is None:
+            return False
+
+        pub_date = parsed.date()
+        today = datetime.now().date()
+
+        # Past window: 0..DAYS_LIMIT days old (inclusive)
+        past_days = (today - pub_date).days
+        if 0 <= past_days <= DAYS_LIMIT:
+            return True
+
+        # Future allowance: exactly "tomorrow" relative to local date
+        future_days = (pub_date - today).days
+        if future_days == 1:
+            return True
+
+        return False
     except Exception:
         return False
 
@@ -216,7 +239,7 @@ def main():
         for entry in entries[:MAX_ENTRIES]:
             try:
                 raw_date = _raw_date_for_recency(entry)
-                if not raw_date or not _is_recent(raw_date):
+                if not raw_date or not is_recent(raw_date):
                     continue
 
                 date_iso = _iso_date(entry)
