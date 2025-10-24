@@ -292,8 +292,8 @@ def main():
 
         time.sleep(0.3)  # be polite
 
-    # Sort output — by keywords (asc), date (desc), then title (asc)
-    all_articles.sort(key=lambda x: (x["keywords"].lower(), x["date_published"], x["title"].lower()))
+    # Sort output — by title (asc)
+    all_articles.sort(key=lambda x: x["title"].lower())
 
     print(f"\nSuccessfully fetched {successful_feeds} out of {total_feeds} feeds.")
     print(f"Total articles (last {DAYS_LIMIT} days): {len(all_articles)}")

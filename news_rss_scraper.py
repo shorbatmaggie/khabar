@@ -308,8 +308,8 @@ def main():
             ]
         )
         writer.writeheader()
-        # Sort alphabetically by keywords before writing 
-        for art in sorted(all_articles, key=lambda x: x["keywords"].strip().lower()):
+        # Sort alphabetically by title before writing
+        for art in sorted(all_articles, key=lambda x: x["title"].strip().lower()):
             writer.writerow(art)
     
     # Output Error Log
@@ -329,4 +329,3 @@ if __name__ == "__main__":
     finally:
         _elapsed = time.perf_counter() - _t0
         print(f"Script runtime: {_elapsed:.2f} seconds ({_elapsed/60:.2f} minutes)")
-
