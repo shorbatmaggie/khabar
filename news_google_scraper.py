@@ -233,14 +233,15 @@ def main():
         entries = getattr(d, "entries", [])
 
         if not entries:
-            msg = f"❌ No entries found. bozo={bozo}, exc={bozo_exception}"
+            msg = f"ℹ️ No entries found. bozo={bozo}, exc={bozo_exception}"
             print(msg)
-            error_log.append({
-                "feed_url": feed_url,
-                "keywords": keywords,
-                "error_type": "parse",
-                "error_message": str(bozo_exception) if bozo_exception else "no entries"
-            })
+            if bozo_exception:
+                error_log.append({
+                    "feed_url": feed_url,
+                    "keywords": keywords,
+                    "error_type": "parse",
+                    "error_message": str(bozo_exception)
+                })
             continue
 
         if bozo:
