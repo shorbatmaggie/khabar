@@ -2,7 +2,7 @@ import csv
 from pathlib import Path
 import feedparser
 from dateutil import parser as dateparser
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 import string
 import time
@@ -19,8 +19,8 @@ scraper = cloudscraper.create_scraper()
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
 
 MAX_SNIPPET_LEN = 400
-DAYS_LIMIT = 10 # ignore old news
-MAX_ENTRIES = 200  # prevent issues with huge feeds
+DAYS_LIMIT = 1 # ignore most old news. consider changing to 0 if there are too many duplicates in dedupe stage
+MAX_ENTRIES = 300  # prevent issues with huge feeds
 REAL_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
@@ -78,8 +78,6 @@ def _is_hardened(target_url: str) -> bool:
     nu = _normalize_url(target_url)
     return (nu in HARDENED_FEED_URLS) or (_domain_of(nu) in HARDENED_DOMAINS)
 
-
-
 def load_keywords(path):
     keywords = set()
     with open(path, newline='', encoding='utf-8') as f:
@@ -114,12 +112,36 @@ def find_trigger_keywords(text, keywords):
     return triggered
 
 def is_recent(pubdate):
+    """
+    Keep items that are:
+      - within the past DAYS_LIMIT *calendar days* (inclusive),
+      - OR exactly one calendar day in the "future"
+    All checks are done as DATE-ONLY (no timezone normalization)
+    """
     try:
-        pub_dt = dateparser.parse(pubdate)
-        now = datetime.now(pub_dt.tzinfo) if pub_dt.tzinfo else datetime.utcnow()
-        return (now - pub_dt).days <= DAYS_LIMIT
+        # Parse whatever we get; many feeds provide date-only strings.
+        # Using .date() makes this robust to missing times/tzinfo.
+        parsed = dateparser.parse(pubdate)
+        if parsed is None:
+            return False
+
+        pub_date = parsed.date()
+        today = datetime.now().date()
+
+        # Past window: 0..DAYS_LIMIT days old (inclusive)
+        past_days = (today - pub_date).days
+        if 0 <= past_days <= DAYS_LIMIT:
+            return True
+
+        # Future allowance: exactly "tomorrow" relative to local date
+        future_days = (pub_date - today).days
+        if future_days == 1:
+            return True
+
+        return False
     except Exception:
         return False
+
 
 def fetch_feed_with_timeout(feed_url, timeout=15):
     if _is_hardened(feed_url):
