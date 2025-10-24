@@ -77,6 +77,19 @@ def _extract_best_link(entry) -> str:
 
     return link
 
+def _extract_source_domain(url: str) -> str:
+    if not url:
+        return ""
+    try:
+        domain = urlparse(url).netloc.lower()
+        if not domain:
+            return ""
+        if domain.startswith("www."):
+            domain = domain[4:]
+        return domain.split(":")[0]
+    except Exception:
+        return ""
+    
 def _raw_date_for_recency(entry) -> str | None:
     """Return a raw date string in order of preference: published, updated, else from *_parsed."""
     for field in ("published", "updated"):
@@ -173,7 +186,7 @@ def fetch_feed_bytes(feed_url: str, timeout: int = 15):
 def main():
     t0 = time.perf_counter()
 
-    # Read feeds CSV (expects headers: feed_url, alert, source)
+    # Read feeds CSV (expects headers: feed_url, keywords, source)
     feeds = []
     with open(CSV_PATH, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f, skipinitialspace=True)
@@ -184,11 +197,11 @@ def main():
             row = { (k or "").strip().lower(): (v or "").strip() for k, v in raw.items() }
 
             feed_url = row.get("feed_url", "")
-            alert    = row.get("alert", "")
+            keywords = row.get("keywords", "")
             source   = row.get("source", "")  # not used downstream rn
 
             if feed_url:
-                feeds.append({"feed_url": feed_url, "alert": alert, "source": source})
+                feeds.append({"feed_url": feed_url, "keywords": keywords, "source": source})
 
 
     total_feeds = len(feeds)
@@ -200,15 +213,15 @@ def main():
 
     for idx, item in enumerate(feeds, start=1):
         feed_url = item["feed_url"]
-        alert = item["alert"]
+        keywords = item["keywords"]
 
-        print(f"\n[{idx}/{total_feeds}] Processing {feed_url}  (alert: {alert})...")
+        print(f"\n[{idx}/{total_feeds}] Processing {feed_url}  (keywords: {keywords})...")
         content, fetch_err = fetch_feed_bytes(feed_url)
         if fetch_err:
             print(fetch_err)
             error_log.append({
                 "feed_url": feed_url,
-                "alert": alert,
+                "keywords": keywords,
                 "error_type": "fetch",
                 "error_message": fetch_err
             })
@@ -224,7 +237,7 @@ def main():
             print(msg)
             error_log.append({
                 "feed_url": feed_url,
-                "alert": alert,
+                "keywords": keywords,
                 "error_type": "parse",
                 "error_message": str(bozo_exception) if bozo_exception else "no entries"
             })
@@ -266,10 +279,11 @@ def main():
                 seen_title_date.add(key_title_date)
 
                 all_articles.append({
-                    "alert": alert,
+                    "keywords": keywords,
                     "title": title,
                     "snippet": snippet,
                     "date_published": date_iso,
+                    "source_domain": _extract_source_domain(link),
                     "url": link
                 })
             except Exception as e:
@@ -278,8 +292,8 @@ def main():
 
         time.sleep(0.3)  # be polite
 
-    # Sort output — by alert (asc), date (desc), then title (asc)
-    all_articles.sort(key=lambda x: (x["alert"].lower(), x["date_published"], x["title"].lower()))
+    # Sort output — by keywords (asc), date (desc), then title (asc)
+    all_articles.sort(key=lambda x: (x["keywords"].lower(), x["date_published"], x["title"].lower()))
 
     print(f"\nSuccessfully fetched {successful_feeds} out of {total_feeds} feeds.")
     print(f"Total articles (last {DAYS_LIMIT} days): {len(all_articles)}")
@@ -288,7 +302,7 @@ def main():
     with open(OUTPUT_CSV, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["alert", "title", "snippet", "date_published", "url"]
+            fieldnames=["keywords", "title", "snippet", "date_published", "source_domain", "url"]
         )
         writer.writeheader()
         for row in all_articles:
@@ -298,7 +312,7 @@ def main():
     with open(OUTPUT_ERROR_LOG, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["feed_url", "alert", "error_type", "error_message"]
+            fieldnames=["feed_url", "keywords", "error_type", "error_message"]
         )
         writer.writeheader()
         for row in error_log:

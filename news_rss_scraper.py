@@ -94,7 +94,7 @@ def normalize(text):
     text = re.sub(r'(\w),(?=\s|$)', r'\1', text)
     return text
 
-def find_trigger_keywords(text, keywords):
+def find_keywords(text, keywords):
     if not text:
         return []
     norm_text = normalize(text)
@@ -218,6 +218,7 @@ def main():
                 continue
             else:
                 print("✅ Feed fetched")
+
             # Now, try to parse
             d = feedparser.parse(feed_content)
             bozo = getattr(d, "bozo", 0)
@@ -253,8 +254,8 @@ def main():
                     snippet = BeautifulSoup(snippet, "html.parser").get_text()[:MAX_SNIPPET_LEN] if snippet else ""
 
                     # Find keywords that triggered this article
-                    triggered_title = find_trigger_keywords(title, KEYWORDS)
-                    triggered_snippet = find_trigger_keywords(snippet, KEYWORDS)
+                    triggered_title = find_keywords(title, KEYWORDS)
+                    triggered_snippet = find_keywords(snippet, KEYWORDS)
                     triggered = list(set(triggered_title + triggered_snippet))
                     if not triggered:
                         continue  # skip articles with no hits
@@ -268,7 +269,7 @@ def main():
 
                     all_articles.append({
                         "date_published": dateparser.parse(date).strftime("%Y-%m-%d"),
-                        "trigger_keywords": ", ".join(sorted(triggered)),
+                        "keywords": ", ".join(sorted(triggered)),
                         "title": title.strip(),
                         "snippet": snippet.strip(),
                         "url": link.strip(),
@@ -298,7 +299,7 @@ def main():
         writer = csv.DictWriter(
             f,
             fieldnames=[
-                "trigger_keywords",
+                "keywords",
                 "title",
                 "snippet",
                 "date_published",
@@ -307,8 +308,8 @@ def main():
             ]
         )
         writer.writeheader()
-        # Sort alphabetically by trigger_keywords before writing 
-        for art in sorted(all_articles, key=lambda x: x["trigger_keywords"].strip().lower()):
+        # Sort alphabetically by keywords before writing 
+        for art in sorted(all_articles, key=lambda x: x["keywords"].strip().lower()):
             writer.writerow(art)
     
     # Output Error Log
