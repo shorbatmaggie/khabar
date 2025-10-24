@@ -274,6 +274,7 @@ def main():
                         "snippet": snippet.strip(),
                         "url": link.strip(),
                         "source_domain": domain,
+                        "in_roundup": ""
                     })
                 except Exception as e:
                     print(f"    Error parsing entry: {e}")
@@ -304,7 +305,8 @@ def main():
                 "snippet",
                 "date_published",
                 "source_domain",
-                "url"
+                "url",
+                "in_roundup"
             ]
         )
         writer.writeheader()

@@ -285,7 +285,8 @@ def main():
                     "snippet": snippet,
                     "date_published": date_iso,
                     "source_domain": _extract_source_domain(link),
-                    "url": link
+                    "url": link,
+                    "in_roundup": ""
                 })
             except Exception as e:
                 print(f"    Error parsing entry: {e}")
@@ -303,7 +304,7 @@ def main():
     with open(OUTPUT_CSV, "w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["keywords", "title", "snippet", "date_published", "source_domain", "url"]
+            fieldnames=["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
         )
         writer.writeheader()
         for row in all_articles:
