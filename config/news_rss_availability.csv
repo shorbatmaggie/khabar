@@ -1,4 +1,4 @@
-domain,rss,feed_url,added,notes,checked
+domain,rss,feed_url,manually added,notes,checked
 stuff.co.nz,Yes,https://www.stuff.co.nz/rss,X,
 abc.net.au,yes,https://www.abc.net.au/news/feed/10719986/rss.xml,,
 abcnews.go.com,yes,https://feeds.abcnews.com/abcnews/internationalheadlines,,
@@ -345,7 +345,8 @@ tolonews.com,yes,https://tolonews.com/rss.xml,,from find_more_feeds.py
 townsvillebulletin.com.au,no,,,
 tribune.com.pk,yes,https://tribune.com.pk/blog/feed,,from find_more_feeds.py
 tribune.com.pk,yes,https://tribune.com.pk/feed/pakistan,x
-tribuneindia.com,no,,,
+tribuneindia.com,yes,https://publish.tribuneindia.com/newscategory/india/feed/,x,,x
+tribuneindia.com,yes,https://publish.tribuneindia.com/newscategory/features/feed/,x,,x
 trtworld.com,no,,,,x
 uab.edu,no,,,
 ucanews.com,no,,,
