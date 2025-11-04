@@ -111,6 +111,11 @@ def find_keywords(text, keywords):
                 triggered.append(kw)
     return triggered
 
+def collapse_whitespace(text: str) -> str:
+    if not text:
+        return ""
+    return re.sub(r"\s+", " ", text).strip()
+
 def is_recent(pubdate):
     """
     Keep items that are:
@@ -243,15 +248,22 @@ def main():
             from bs4 import BeautifulSoup
             for entry in d.entries[:MAX_ENTRIES]:
                 try:
-                    title = entry.title
-                    link = entry.link
+                    raw_title = getattr(entry, "title", "")
+                    link = getattr(entry, "link", "")
                     date = getattr(entry, 'published', getattr(entry, 'updated', None))
-                    snippet = getattr(entry, 'summary', "")
-                    if not (title and link and date):
+                    raw_snippet = getattr(entry, 'summary', "")
+                    if not (raw_title and link and date):
                         continue
                     if not is_recent(date):
                         continue
-                    snippet = BeautifulSoup(snippet, "html.parser").get_text()[:MAX_SNIPPET_LEN] if snippet else ""
+
+                    title = collapse_whitespace(raw_title)
+                    link = link.strip()
+
+                    snippet = ""
+                    if raw_snippet:
+                        text = BeautifulSoup(raw_snippet, "html.parser").get_text(" ", strip=True)
+                        snippet = collapse_whitespace(text)[:MAX_SNIPPET_LEN]
 
                     # Find keywords that triggered this article
                     triggered_title = find_keywords(title, KEYWORDS)
