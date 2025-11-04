@@ -1,6 +1,5 @@
 from __future__ import annotations
 import csv
-import json
 import re
 import sys
 from pathlib import Path
@@ -8,14 +7,14 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Any, Set, Tuple
 
 # === CONFIG ===
-CSV_DIR  = Path("/Users/maggie/Documents/PIL/news_roundup/articles_csv")
-JSON_DIR = Path("/Users/maggie/Documents/PIL/news_roundup/articles_json")
+BASE_DIR = Path(__file__).resolve().parent
+ARTICLES_DIR = BASE_DIR / "data/digests/rss_digests"
 
 # Expected fields/order
-FIELDS = ["trigger_keywords", "title", "snippet", "date_published", "source_domain", "url"]
+FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
 
 # Regex to extract date from filenames
-DATE_RE = re.compile(r"candidate_articles_(\d{4}-\d{2}-\d{2})\.(csv|json)$", re.IGNORECASE)
+DATE_RE = re.compile(r"rss_articles_(\d{4}-\d{2}-\d{2})\.csv", re.IGNORECASE)
 
 
 # === DATE HELPERS ===
@@ -46,7 +45,7 @@ def prompt_start_date() -> datetime:
 # === FILE SELECTION ===
 def select_files_in_dates(folder: Path, ext: str, allowed_dates: Set[str]) -> List[Path]:
     picks: List[Tuple[str, Path]] = []
-    for p in folder.glob(f"candidate_articles_*.{ext}"):
+    for p in folder.glob(f"rss_articles_*.{ext}"):
         m = DATE_RE.search(p.name)
         if not m:
             continue
@@ -57,10 +56,7 @@ def select_files_in_dates(folder: Path, ext: str, allowed_dates: Set[str]) -> Li
     return [p for _, p in picks]
 
 
-# === DEDUP HELPERS ===
-def canonicalize_json_obj(obj: Dict[str, Any]) -> str:
-    return json.dumps(obj, sort_keys=True, ensure_ascii=False)
-
+# === DEDUPE HELPER ===
 def build_master_csv(csv_files: List[Path], out_path: Path) -> tuple[int, int, int]:
     """
     Returns (unique_count, total_rows_read, duplicate_count).
@@ -95,40 +91,6 @@ def build_master_csv(csv_files: List[Path], out_path: Path) -> tuple[int, int, i
     dup_count = max(0, total_rows - unique_count)
     return unique_count, total_rows, dup_count
 
-
-def build_master_json(json_files: List[Path], out_path: Path) -> tuple[int, int, int]:
-    """
-    Returns (unique_count, total_objects_read, duplicate_count).
-    """
-    seen: Set[str] = set()
-    unique_objs: List[Dict[str, Any]] = []
-    total_objs = 0
-
-    for fp in json_files:
-        with fp.open("r", encoding="utf-8") as f:
-            data = json.load(f)
-        if not isinstance(data, list):
-            raise ValueError(f"{fp} does not contain a top-level JSON list.")
-
-        for obj in data:
-            if not isinstance(obj, dict):
-                continue
-            total_objs += 1
-            key = canonicalize_json_obj(obj)
-            if key in seen:
-                continue
-            seen.add(key)
-            unique_objs.append(obj)
-
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with out_path.open("w", encoding="utf-8") as f:
-        json.dump(unique_objs, f, ensure_ascii=False, indent=2)
-
-    unique_count = len(unique_objs)
-    dup_count = max(0, total_objs - unique_count)
-    return unique_count, total_objs, dup_count
-
-
 # === MAIN ===
 def main() -> None:
     # Support optional CLI arg: --start YYYY-MM-DD
@@ -153,12 +115,10 @@ def main() -> None:
     start_str, end_str = date_list[0], date_list[-1]
 
     # Select inputs
-    csv_inputs = select_files_in_dates(CSV_DIR, "csv", allowed_dates)
-    json_inputs = select_files_in_dates(JSON_DIR, "json", allowed_dates)
+    csv_inputs = select_files_in_dates(ARTICLES_DIR, "csv", allowed_dates)
 
     # Plan outputs
-    csv_out  = CSV_DIR  / f"deduped_candidate_articles_{start_str}_to_{end_str}.csv"
-    json_out = JSON_DIR / f"deduped_candidate_articles_{start_str}_to_{end_str}.json"
+    csv_out  = ARTICLES_DIR  / f"deduped_candidate_articles_{start_str}_to_{end_str}.csv"
 
     # Build masters
     if csv_inputs:
@@ -166,16 +126,9 @@ def main() -> None:
     else:
         csv_unique, csv_total, csv_dups = 0, 0, 0
 
-    if json_inputs:
-        json_unique, json_total, json_dups = build_master_json(json_inputs, json_out)
-    else:
-        json_unique, json_total, json_dups = 0, 0, 0
-
     # Summary (stdout) — matches Google style
     print(f"[CSV]  {len(csv_inputs)} files -> {csv_dups} duplicates out of {csv_total} rows. "
         f"{csv_unique} unique rows saved to {csv_out}")
-    print(f"[JSON] {len(json_inputs)} files -> {json_dups} duplicates out of {json_total} objects. "
-        f"{json_unique} unique objects saved to {json_out}")
 
  
 if __name__ == "__main__":
