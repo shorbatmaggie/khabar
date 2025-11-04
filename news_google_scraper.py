@@ -310,19 +310,20 @@ def main():
         for row in all_articles:
             writer.writerow(row)
 
-    # Error log
-    with open(OUTPUT_ERROR_LOG, "w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=["feed_url", "keywords", "error_type", "error_message"]
-        )
-        writer.writeheader()
-        for row in error_log:
-            writer.writerow(row)
-
     elapsed = time.perf_counter() - t0
     print(f"\nSaved articles to {OUTPUT_CSV}.")
-    print(f"Saved error log to {OUTPUT_ERROR_LOG}.")
+    if error_log:
+        with open(OUTPUT_ERROR_LOG, "w", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=["feed_url", "keywords", "error_type", "error_message"]
+            )
+            writer.writeheader()
+            for row in error_log:
+                writer.writerow(row)
+        print(f"Saved error log to {OUTPUT_ERROR_LOG}.")
+    else:
+        print("No errors encountered; skipped writing error log.")
     print(f"Script runtime: {elapsed:.2f} seconds ({elapsed/60:.2f} minutes)")
 
 
