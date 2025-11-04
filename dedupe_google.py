@@ -4,7 +4,7 @@ import re
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
-from typing import List, Dict, Any, Set, Tuple
+from typing import List, Dict, Tuple, Optional, Set
 
 # === CONFIG ===
 BASE_DIR = Path(__file__).resolve().parent
@@ -16,45 +16,55 @@ FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "ur
 # Filenames: google_alerts_articles_YYYY-MM-DD.csv
 PATTERN_STEM = "google_alerts_articles"
 DATE_RE = re.compile(rf"{PATTERN_STEM}_(\d{{4}}-\d{{2}}-\d{{2}})\.csv", re.IGNORECASE)
+DEDUPED_RE = re.compile(
+    rf"deduped_{PATTERN_STEM}_(\d{{4}}-\d{{2}}-\d{{2}})_to_(\d{{4}}-\d{{2}}-\d{{2}})\.csv",
+    re.IGNORECASE,
+)
 
 
 # === DATE HELPERS ===
 def parse_date_str(s: str) -> datetime:
     return datetime.strptime(s, "%Y-%m-%d")
 
-def daterange(start: datetime, end: datetime) -> List[str]:
-    """Inclusive list of YYYY-MM-DD from start..end."""
-    days = (end.date() - start.date()).days
-    return [(start + timedelta(days=i)).strftime("%Y-%m-%d") for i in range(days + 1)]
-
-def prompt_start_date() -> datetime:
-    """Prompt until a valid YYYY-MM-DD that is not in the future."""
-    today = datetime.now().date()
-    while True:
-        s = input("Enter start date (YYYY-MM-DD): ").strip()
-        try:
-            d = parse_date_str(s).date()
-        except ValueError:
-            print("Invalid format. Please use YYYY-MM-DD.")
-            continue
-        if d > today:
-            print("Start date cannot be in the future.")
-            continue
-        return datetime.combine(d, datetime.min.time())
-
 
 # === FILE SELECTION ===
-def select_files_in_dates(folder: Path, ext: str, allowed_dates: Set[str]) -> List[Path]:
-    picks: List[Tuple[str, Path]] = []
-    for p in folder.glob(f"{PATTERN_STEM}_*.{ext}"):
+def list_csv_files_with_dates(folder: Path) -> List[Tuple[datetime, Path]]:
+    picks: List[Tuple[datetime, Path]] = []
+    for p in folder.glob(f"{PATTERN_STEM}_*.csv"):
         m = DATE_RE.search(p.name)
         if not m:
             continue
-        dstr = m.group(1)
-        if dstr in allowed_dates:
-            picks.append((dstr, p))
+        dt = parse_date_str(m.group(1))
+        picks.append((dt, p))
     picks.sort(key=lambda x: (x[0], x[1].name))
-    return [p for _, p in picks]
+    return picks
+
+
+def find_latest_deduped_end_date(folder: Path) -> Optional[datetime]:
+    latest_end: Optional[datetime] = None
+    for p in folder.glob(f"deduped_{PATTERN_STEM}_*_to_*.csv"):
+        m = DEDUPED_RE.fullmatch(p.name)
+        if not m:
+            continue
+        end_dt = parse_date_str(m.group(2))
+        if latest_end is None or end_dt > latest_end:
+            latest_end = end_dt
+    return latest_end
+
+
+def determine_start_date(
+    csv_entries: List[Tuple[datetime, Path]],
+    cli_start: Optional[datetime]
+) -> datetime:
+    if cli_start is not None:
+        return cli_start
+
+    latest_end = find_latest_deduped_end_date(ARTICLES_DIR)
+    if latest_end is not None:
+        return latest_end + timedelta(days=1)
+
+    # No deduped files yet; start from earliest available CSV.
+    return csv_entries[0][0]
 
 
 # === DEDUP HELPER ===
@@ -95,28 +105,32 @@ def build_master_csv(csv_files: List[Path], out_path: Path) -> tuple[int, int, i
 # === MAIN ===
 def main() -> None:
     # Optional CLI arg: --start YYYY-MM-DD
-    start_dt: datetime
+    cli_start: Optional[datetime] = None
     if len(sys.argv) >= 3 and sys.argv[1] == "--start":
         try:
-            start_dt = parse_date_str(sys.argv[2])
+            cli_start = parse_date_str(sys.argv[2])
         except ValueError:
             print("Invalid --start date. Use YYYY-MM-DD.")
             sys.exit(2)
-        if start_dt.date() > datetime.now().date():
+        if cli_start.date() > datetime.now().date():
             print("Start date cannot be in the future.")
             sys.exit(2)
-    else:
-        start_dt = prompt_start_date()
 
-    end_dt = datetime.now()
+    csv_entries = list_csv_files_with_dates(ARTICLES_DIR)
+    if not csv_entries:
+        print(f"No CSV files found in {ARTICLES_DIR}")
+        return
 
-    # Build allowed date set (inclusive)
-    date_list = daterange(start_dt, end_dt)
-    allowed_dates = set(date_list)
-    start_str, end_str = date_list[0], date_list[-1]
+    start_dt = determine_start_date(csv_entries, cli_start)
 
-    # Select inputs
-    csv_inputs = select_files_in_dates(ARTICLES_DIR, "csv", allowed_dates)
+    selected = [(dt, path) for dt, path in csv_entries if dt >= start_dt]
+    if not selected:
+        print(f"No CSV files found on or after {start_dt.strftime('%Y-%m-%d')}")
+        return
+
+    start_str = selected[0][0].strftime("%Y-%m-%d")
+    end_str = selected[-1][0].strftime("%Y-%m-%d")
+    csv_inputs = [path for _, path in selected]
 
     # Plan outputs
     csv_out  = ARTICLES_DIR / f"deduped_{PATTERN_STEM}_{start_str}_to_{end_str}.csv"

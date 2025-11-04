@@ -1,6 +1,7 @@
 
 # Noise
 .DS_Store
+__pycache__/
 
 # Data 
 data/
