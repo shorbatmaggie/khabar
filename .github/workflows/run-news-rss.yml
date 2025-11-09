@@ -1,0 +1,60 @@
+name: Run RSS Scraper (manual)
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: run-rss-scraper
+  cancel-in-progress: false
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: "requirements/rss_scraper.txt"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/rss_scraper.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements/rss_scraper.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers and Linux deps
+        run: |
+          python -m playwright install-deps
+          python -m playwright install firefox
+
+      - name: Ensure output directories
+        run: |
+          mkdir -p data/digests/rss_digests
+          mkdir -p data/error_logs/rss_errors
+
+      - name: Run scraper
+        run: |
+          python news_rss_scraper.py
+
+      - name: Upload artifacts (digests + error logs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss-scraper-output-${{ github.run_id }}
+          path: |
+            data/digests/rss_digests/*.csv
+            data/error_logs/rss_errors/*.csv
+          if-no-files-found: warn
+          retention-days: 30
