@@ -1,0 +1,45 @@
+name: Run Google Alerts Scraper (manual)
+
+on:
+  workflow_dispatch: {}   # manual trigger for now
+
+concurrency:
+  group: run-google-alerts
+  cancel-in-progress: false
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ensure output directories
+        run: |
+          mkdir -p data/digests/google_digests
+          mkdir -p data/error_logs/google_errors
+
+      - name: Run scraper
+        run: |
+          python news_google_scraper.py
+
+      - name: Upload artifacts (digests + error logs)
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-alerts-output-${{ github.run_id }}
+          path: |
+            data/digests/google_digests/*.csv
+            data/error_logs/google_errors/*.csv
+          if-no-files-found: warn
+          retention-days: 90
