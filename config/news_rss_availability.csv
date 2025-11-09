@@ -193,7 +193,7 @@ livemint.com,yes,https://www.livemint.com/rss/elections,x
 livemint.com,yes,https://www.livemint.com/rss/money,x
 loc.gov,yes,https://loc.gov/blog/feed,,from find_more_feeds.py
 m.realnoevremya.com,no,,,
-malaymail.com,no,,,
+malaymail.com,yes,https://www.malaymail.com/feed/rss/malaysia,,
 malaysia.news.yahoo.com,no,,,
 malaysiagazette.com,no,,,
 malaysiakini.com,yes,https://malaysiakini.com/rss/en/news.rss,,from find_more_feeds.py
