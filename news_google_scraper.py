@@ -16,16 +16,8 @@ from bs4 import BeautifulSoup
 RUN_DATE = datetime.now().strftime("%Y-%m-%d")
 
 MAX_SNIPPET_LEN = 400
-DAYS_LIMIT = 1 # ignore most old news. consider changing to 0 if there are too many duplicates in dedupe stage
+DAYS_LIMIT = 1 # ignore most old news. consider changing to 0 if there are too many duplicates 
 MAX_ENTRIES = 300  # prevent issues with huge feeds (not really necessary but a good precaution)      
-
-REAL_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://www.google.com",
-    "Connection": "keep-alive",
-}
 
 BASE_DIR = Path(__file__).resolve().parent
 CSV_PATH = BASE_DIR / "config/news_google_rss_list.csv"
@@ -171,9 +163,8 @@ def _extract_snippet(entry) -> str:
 
 
 def fetch_feed_bytes(feed_url: str, timeout: int = 15):
-    """Plain requests fetch; no playwright/cloudscraper per your requirement."""
     try:
-        resp = requests.get(feed_url, headers=REAL_HEADERS, timeout=timeout)
+        resp = requests.get(feed_url, timeout=timeout)
         resp.raise_for_status()
         return resp.content, None
     except requests.exceptions.HTTPError as e:
