@@ -1,7 +1,9 @@
-name: Run Google Alerts Scraper (manual)
+name: Run Google Alerts Scraper (manual + daily 11:35 UTC)
 
 on:
-  workflow_dispatch: {}   # manual trigger for now
+  workflow_dispatch: {}   # manual trigger 
+  schedule:
+    - cron: "35 11 * * *"   # every day at 11:35 UTC (6:35 AM EST, 7:35 AM EDT)
 
 concurrency:
   group: run-google-alerts
@@ -19,11 +21,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: "requirements/google_scraper.txt"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements/google_scraper.txt
 
       - name: Ensure output directories
         run: |
@@ -42,4 +46,4 @@ jobs:
             data/digests/google_digests/*.csv
             data/error_logs/google_errors/*.csv
           if-no-files-found: warn
-          retention-days: 90
+          retention-days: 30
