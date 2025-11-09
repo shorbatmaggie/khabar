@@ -22,7 +22,7 @@ MAX_SNIPPET_LEN = 400
 DAYS_LIMIT = 1 # ignore most old news. consider changing to 0 if there are too many duplicates in dedupe stage
 MAX_ENTRIES = 300  # prevent issues with huge feeds
 REAL_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
     "Accept": "application/rss+xml, application/xml;q=0.9, */*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
     "Referer": "https://www.google.com",
@@ -40,8 +40,10 @@ ERROR_DIR = BASE_DIR / "data/error_logs/rss_errors"
 OUTPUT_CSV = ARTICLES_DIR / f"rss_articles_{RUN_DATE}.csv"
 OUTPUT_ERROR_LOG = ERROR_DIR / f"rss_fetch_and_parse_errors_{RUN_DATE}.csv"
 
+# ---------- Helpers ----------
+
 def _normalize_url(u: str) -> str:
-    """Lowercase scheme/host, strip trailing slash on path (except root), keep query."""
+    # Lowercase scheme/host, strip trailing slash on path (except root), keep query
     if not u:
         return ""
     u = u.strip()
@@ -74,7 +76,7 @@ def _load_hardened_feeds(csv_path: str):
 HARDENED_FEED_URLS, HARDENED_DOMAINS = _load_hardened_feeds(HARDENED_FEEDS)
 
 def _is_hardened(target_url: str) -> bool:
-    """True if the exact URL or its domain appears in the hardened feeds CSV."""
+   # True if the exact URL or its domain appears in the hardened feeds CSV.
     nu = _normalize_url(target_url)
     return (nu in HARDENED_FEED_URLS) or (_domain_of(nu) in HARDENED_DOMAINS)
 
@@ -117,15 +119,7 @@ def collapse_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 def is_recent(pubdate):
-    """
-    Keep items that are:
-      - within the past DAYS_LIMIT *calendar days* (inclusive),
-      - OR exactly one calendar day in the "future"
-    All checks are done as DATE-ONLY (no timezone normalization)
-    """
     try:
-        # Parse whatever we get; many feeds provide date-only strings.
-        # Using .date() makes this robust to missing times/tzinfo.
         parsed = dateparser.parse(pubdate)
         if parsed is None:
             return False
