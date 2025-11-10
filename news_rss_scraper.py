@@ -120,7 +120,7 @@ def collapse_whitespace(text: str) -> str:
 
 def is_recent(pubdate):
     try:
-        parsed = dateparser.parse(pubdate)
+        parsed = dateparser.parse(pubdate, ignoretz=True)
         if parsed is None:
             return False
 
@@ -267,14 +267,14 @@ def main():
                         continue  # skip articles with no hits
 
                     ukey = link.strip()
-                    unique_id = (title.strip().lower(), dateparser.parse(date).strftime("%Y-%m-%d"))
+                    unique_id = (title.strip().lower(), dateparser.parse(date, ignoretz=True).strftime("%Y-%m-%d"))
                     if ukey in seen_urls or unique_id in seen_titles:
                         continue
                     seen_urls.add(ukey)
                     seen_titles.add(unique_id)
 
                     all_articles.append({
-                        "date_published": dateparser.parse(date).strftime("%Y-%m-%d"),
+                        "date_published": dateparser.parse(date, ignoretz=True).strftime("%Y-%m-%d"),
                         "keywords": ", ".join(sorted(triggered)),
                         "title": title.strip(),
                         "snippet": snippet.strip(),
