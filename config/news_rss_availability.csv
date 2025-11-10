@@ -74,7 +74,7 @@ chathamhouse.org,no,,,,x
 cnnmoney.com,yes,http://rss.cnn.com/rss/money_latest.rss,,
 coloradopolitics.com,yes,https://coloradopolitics.com/feed,,from find_more_feeds.py
 ctinsider.com,no,,,,x
-ctvnews.ca,yes,https://www.ctvnews.ca/rss/ctvnews-ca-top-stories-public-rss-1.822009,,
+ctvnews.ca,no,https://www.ctvnews.ca/rss/ctvnews-ca-top-stories-public-rss-1.822009,, down since site migration as of 11/25
 dailyherald.com,no,,,,x 
 dailymaverick.co.za,yes,https://www.dailymaverick.co.za/dmrss,,
 dailyo.in,no,,,,x 
@@ -121,7 +121,7 @@ france24.com,yes,https://www.france24.com/en/americas/rss,x
 france24.com,yes,https://www.france24.com/en/asia-pacific/rss,x
 freep.com,no,,,,X
 metrotimes.com,yes,https://www.metrotimes.com/detroit/Rss.xml/feed,x
-freepressjournal.in,yes,https://freepressjournal.in/feed,,from find_more_feeds.py
+freepressjournal.in,yes,https://www.freepressjournal.in/stories.rss,,
 frontiersin.org,yes,https://www.frontiersin.org/news/rss,,from find_more_feeds.py
 ftadviser.com,yes,https://www.ft.com/rss/home
 gandhara.rferl.org,yes,https://gandhara.rferl.org/api/,,from find_more_feeds.py
