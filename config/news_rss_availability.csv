@@ -46,7 +46,7 @@ bssnews.net,no,,,,x
 business-standard.com,yes,https://www.business-standard.com/rss/latest.rss,,
 business-standard.com,yes,https://www.business-standard.com/rss/india-news-216.rss,,
 businesswire.com,no,,,,x 
-buzzfeednews.com,yes,https://www.buzzfeed.com/usnews.xml,,
+buzzfeed.com,yes,https://www.buzzfeed.com/index.xml,x,
 ca.finance.yahoo.com,yes,https://ca.finance.yahoo.com/?feed=rss2,,from find_more_feeds.py
 ca.movies.yahoo.com,no,,,,x 
 ca.news.yahoo.com,yes,https://ca.news.yahoo.com/rss,,from find_more_feeds.py
