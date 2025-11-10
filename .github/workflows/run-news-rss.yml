@@ -1,7 +1,9 @@
-name: Run RSS Scraper (manual)
+name: Run RSS Scraper (manual + daily jittered)
 
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "35 11 * * *"   # every day at 11:35 UTC (6:35 AM EST, 7:35 AM EDT)
 
 concurrency:
   group: run-rss-scraper
@@ -47,6 +49,14 @@ jobs:
         run: |
           mkdir -p data/digests/rss_digests
           mkdir -p data/error_logs/rss_errors
+
+      - name: Add jitter before scraper run
+        if: github.event_name == 'schedule'
+        shell: bash
+        run: |
+          delay=$(( (RANDOM % 3 + 2) * 60 ))
+          echo "Sleeping for $delay seconds (2-4 min jitter) before starting scraper."
+          sleep $delay
 
       - name: Run scraper
         run: |
