@@ -1,0 +1,60 @@
+name: Dedupe Google weekly (from Drive)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  dedupe-google-weekly-from-drive:
+    runs-on: ubuntu-latest
+
+    env:
+      # Local destination for downloaded daily CSVs
+      WEEKLY_INPUT_DIR: weekly_input/google
+      # Path where we'll write the service account JSON
+      GOOGLE_APPLICATION_CREDENTIALS: service_account.json
+      # Drive folder ID for the daily Google CSVs
+      GDRIVE_GOOGLE_FOLDER_ID: ${{ secrets.GDRIVE_GOOGLE_FOLDER_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            google-api-python-client \
+            google-auth \
+            google-auth-httplib2 \
+            google-auth-oauthlib
+
+      - name: Write service account JSON
+        run: |
+          echo "${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}" > "$GOOGLE_APPLICATION_CREDENTIALS"
+          # Optional sanity check
+          ls -l "$GOOGLE_APPLICATION_CREDENTIALS"
+
+      - name: Fetch weekly Google CSVs from Drive (Sat–Fri)
+        run: |
+          mkdir -p "$WEEKLY_INPUT_DIR"
+          python fetch_google_week_from_drive.py "$WEEKLY_INPUT_DIR"
+
+      - name: List downloaded CSVs (debug)
+        run: |
+          echo "Contents of $WEEKLY_INPUT_DIR:"
+          find "$WEEKLY_INPUT_DIR" -maxdepth 3 -type f -print
+
+      - name: Run weekly dedupe
+        run: |
+          python dedupe_google_weekly.py "$WEEKLY_INPUT_DIR"
+
+      - name: Upload weekly Google digest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: google_weekly_digest
+          path: data/digests/weekly/google_weekly_*.csv
