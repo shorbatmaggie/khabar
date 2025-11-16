@@ -2,6 +2,8 @@ name: Collect digests and upload to Google Drive
 
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "27 12 * * *" # every day at 12:27 UTC to accommodate rss scraper + jitter and round number github delays  
 
 permissions:
   contents: read
