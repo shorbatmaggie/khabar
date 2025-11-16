@@ -18,7 +18,7 @@ def get_drive_client(service_account_json: str):
         print(f"❌ Failed to parse GDRIVE_SERVICE_ACCOUNT_JSON: {e}")
         sys.exit(1)
 
-    scopes = ["https://www.googleapis.com/auth/drive.file"]
+    scopes = ["https://www.googleapis.com/auth/drive"]
     creds = service_account.Credentials.from_service_account_info(info, scopes=scopes)
     return build("drive", "v3", credentials=creds)
 
@@ -47,7 +47,13 @@ def upload_file(
         )
         existing = (
             drive.files()
-            .list(q=query, fields="files(id, name)")
+            .list(
+                q=query,
+                fields="files(id, name)",
+                supportsAllDrives=True,
+                includeItemsFromAllDrives=True,
+                corpora="allDrives",
+            )
             .execute()
         )
         for f in existing.get("files", []):
@@ -59,7 +65,12 @@ def upload_file(
 
     uploaded = (
         drive.files()
-        .create(body=file_metadata, media_body=media, fields="id, name")
+        .create(
+            body=file_metadata,
+            media_body=media,
+            fields="id, name",
+            supportsAllDrives=True,
+        )
         .execute()
     )
     print(f"✅ Uploaded {file_name} to Drive with ID: {uploaded['id']}")
