@@ -2,6 +2,8 @@ name: Dedupe weekly (from Drive)
 
 on:
   workflow_dispatch: {}
+  schedule:
+    - cron: "47 12 * * 5" # every friday at 12:47 UTC 
 
 jobs:
   dedupe-weekly-from-drive:
