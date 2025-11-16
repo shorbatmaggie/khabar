@@ -47,7 +47,7 @@ jobs:
       - name: Upload Google digests to Google Drive
         run: |
           # Find only digest CSVs, not error logs
-          files=$(find artifacts/google -type f -path "*/data/digests/google_digests/*.csv" || true)
+          files=$(find artifacts/google -type f -path "*/digests/google_digests/*.csv" || true)
 
           if [ -z "$files" ]; then
             echo "No Google digest CSV files found; nothing to upload."
@@ -97,7 +97,7 @@ jobs:
       - name: Upload RSS digests to Google Drive
         run: |
           # Find only digest CSVs, not error logs
-          files=$(find artifacts/rss -type f -path "*/data/digests/rss_digests/*.csv" || true)
+          files=$(find artifacts/rss -type f -path "*/digests/rss_digests/*.csv" || true)
 
           if [ -z "$files" ]; then
             echo "No RSS digest CSV files found; nothing to upload."
