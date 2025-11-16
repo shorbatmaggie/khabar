@@ -1,0 +1,88 @@
+name: Dedupe weekly (from Drive)
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  dedupe-weekly-from-drive:
+    runs-on: ubuntu-latest
+
+    env:
+      WEEKLY_INPUT_GOOGLE_DIR: weekly_input/google
+      WEEKLY_INPUT_RSS_DIR: weekly_input/rss
+      GOOGLE_APPLICATION_CREDENTIALS: service_account.json
+      GDRIVE_GOOGLE_FOLDER_ID: ${{ secrets.GDRIVE_GOOGLE_FOLDER_ID }}
+      GDRIVE_RSS_FOLDER_ID: ${{ secrets.GDRIVE_RSS_FOLDER_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            google-api-python-client \
+            google-auth \
+            google-auth-httplib2 \
+            google-auth-oauthlib
+
+      - name: Write service account JSON
+        run: |
+          printf '%s' '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
+          ls -l "$GOOGLE_APPLICATION_CREDENTIALS"
+
+      # ---------- GOOGLE ----------
+
+      - name: Fetch weekly Google CSVs from Drive (Sat–Fri)
+        run: |
+          mkdir -p "$WEEKLY_INPUT_GOOGLE_DIR"
+          python fetch_week_from_drive.py \
+            "$WEEKLY_INPUT_GOOGLE_DIR" \
+            google_alerts_articles \
+            GDRIVE_GOOGLE_FOLDER_ID
+
+      - name: List downloaded Google CSVs (debug)
+        run: |
+          echo "Contents of $WEEKLY_INPUT_GOOGLE_DIR:"
+          find "$WEEKLY_INPUT_GOOGLE_DIR" -maxdepth 3 -type f -print
+
+      - name: Run weekly Google dedupe
+        run: |
+          python dedupe_google_weekly.py "$WEEKLY_INPUT_GOOGLE_DIR"
+
+      - name: Upload weekly Google digest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: google_weekly_digest
+          path: data/digests/weekly/google_weekly_*.csv
+
+      # ---------- RSS ----------
+
+      - name: Fetch weekly RSS CSVs from Drive (Sat–Fri)
+        run: |
+          mkdir -p "$WEEKLY_INPUT_RSS_DIR"
+          python fetch_week_from_drive.py \
+            "$WEEKLY_INPUT_RSS_DIR" \
+            rss_articles \
+            GDRIVE_RSS_FOLDER_ID
+
+      - name: List downloaded RSS CSVs (debug)
+        run: |
+          echo "Contents of $WEEKLY_INPUT_RSS_DIR:"
+          find "$WEEKLY_INPUT_RSS_DIR" -maxdepth 3 -type f -print
+
+      - name: Run weekly RSS dedupe
+        run: |
+          python dedupe_rss_weekly.py "$WEEKLY_INPUT_RSS_DIR"
+
+      - name: Upload weekly RSS digest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rss_weekly_digest
+          path: data/digests/weekly/rss_weekly_*.csv
