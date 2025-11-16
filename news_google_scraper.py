@@ -31,6 +31,7 @@ OUTPUT_ERROR_LOG = ERROR_DIR / f"google_fetch_and_parse_errors_{RUN_DATE}.csv"
 # ---------- Helpers tuned for Google Alerts ----------
 
 def _html_to_text(s: str) -> str:
+    """Convert HTML fragments into normalized plain text."""
     if not s:
         return ""
     text = BeautifulSoup(s, "html.parser").get_text()
@@ -41,8 +42,8 @@ def _html_to_text(s: str) -> str:
 
 def _extract_best_link(entry) -> str:
     """
-    Google Alerts often uses https://www.google.com/url?... with real target in q= or url=.
-    Prefer entry.link; fallback to first href in entry.links.
+    Prefer entry.link; fallback to the first link href, and decode Google redirect URLs
+    so they point directly at the original source.
     """
     link = getattr(entry, "link", "") or ""
     if not link:
@@ -55,7 +56,6 @@ def _extract_best_link(entry) -> str:
     if not link:
         return ""
 
-    # If it's a Google redirect, pull the real URL from query params.
     try:
         pu = urlparse(link)
         if pu.netloc.endswith("google.com") and pu.path.startswith("/url"):
@@ -70,6 +70,7 @@ def _extract_best_link(entry) -> str:
     return link
 
 def _extract_source_domain(url: str) -> str:
+    """Return the source domain (without scheme/www/port) for display."""
     if not url:
         return ""
     try:
@@ -163,6 +164,7 @@ def _extract_snippet(entry) -> str:
 
 
 def fetch_feed_bytes(feed_url: str, timeout: int = 15):
+    """Fetch a feed URL and return its raw bytes plus an error string (if any)."""
     try:
         resp = requests.get(feed_url, timeout=timeout)
         resp.raise_for_status()
@@ -175,9 +177,9 @@ def fetch_feed_bytes(feed_url: str, timeout: int = 15):
 
 
 def main():
+    """Load Google Alerts feeds, collect recent articles, and write digests/error logs."""
     t0 = time.perf_counter()
 
-    # Read feeds CSV (expects headers: feed_url, keywords, source)
     feeds = []
     with open(CSV_PATH, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f, skipinitialspace=True)

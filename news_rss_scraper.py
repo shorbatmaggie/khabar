@@ -43,7 +43,7 @@ OUTPUT_ERROR_LOG = ERROR_DIR / f"rss_fetch_and_parse_errors_{RUN_DATE}.csv"
 # ---------- Helpers ----------
 
 def _normalize_url(u: str) -> str:
-    # Lowercase scheme/host, strip trailing slash on path (except root), keep query
+    """Normalize the URL by lowercasing scheme/host and trimming trailing slashes."""
     if not u:
         return ""
     u = u.strip()
@@ -76,7 +76,7 @@ def _load_hardened_feeds(csv_path: str):
 HARDENED_FEED_URLS, HARDENED_DOMAINS = _load_hardened_feeds(HARDENED_FEEDS)
 
 def _is_hardened(target_url: str) -> bool:
-   # True if the exact URL or its domain appears in the hardened feeds CSV.
+    """Return True if the target URL or its domain is in the hardened feeds CSV."""
     nu = _normalize_url(target_url)
     return (nu in HARDENED_FEED_URLS) or (_domain_of(nu) in HARDENED_DOMAINS)
 
