@@ -12,12 +12,6 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
 import io
 
-# --- CONFIG ---
-
-# Same naming pattern as your deduper
-PATTERN_STEM = "google_alerts_articles"
-DATE_RE = re.compile(rf"{PATTERN_STEM}_(\d{{4}}-\d{{2}}-\d{{2}})\.csv", re.IGNORECASE)
-
 # Drive scopes
 DRIVE_SCOPES = ["https://www.googleapis.com/auth/drive.readonly"]
 
@@ -37,7 +31,7 @@ def compute_week_window(today: date) -> Tuple[date, date]:
     on the most recent Friday on or before `today`.
     """
     end_date = most_recent_friday(today)
-    start_date = end_date - timedelta(days=6)  # 7 days total: Sat–Fri
+    start_date = end_date - timedelta(days=6)  # 7 days: Sat–Fri
     return start_date, end_date
 
 
@@ -55,21 +49,16 @@ def get_drive_service(credentials_path: str):
 def list_candidate_files(
     service,
     folder_id: str,
+    date_re: re.Pattern,
 ) -> List[Tuple[str, str]]:
     """
-    List CSV files in the given folder that match google_alerts_articles_YYYY-MM-DD.csv.
+    List files in the given folder and return those whose names match date_re.
 
     Returns a list of (file_id, file_name).
     """
-    results: List[Tuple[str, str]] = []
+    candidates: List[Tuple[str, str]] = []
 
-    # Drive query: in folder, not trashed, name contains pattern, mimeType text/csv-ish
-    # We keep the mimeType condition loose because some tools set slightly different types.
-    query = (
-        f"'{folder_id}' in parents and "
-        "trashed = false and "
-        f"name contains '{PATTERN_STEM}_'"
-    )
+    query = f"'{folder_id}' in parents and trashed = false"
 
     page_token = None
     while True:
@@ -87,19 +76,25 @@ def list_candidate_files(
         )
 
         for f in response.get("files", []):
+            fid = f.get("id")
             name = f.get("name", "")
-            if DATE_RE.fullmatch(name):
-                results.append((f["id"], name))
+            if date_re.fullmatch(name):
+                candidates.append((fid, name))
 
         page_token = response.get("nextPageToken")
         if not page_token:
             break
 
-    return results
+    print(
+        f"Found {len(candidates)} candidate files with pattern {date_re.pattern!r} "
+        f"in folder {folder_id}"
+    )
+    return candidates
 
 
 def filter_files_for_week(
     candidates: List[Tuple[str, str]],
+    date_re: re.Pattern,
     start_date: date,
     end_date: date,
 ) -> List[Tuple[str, str, date]]:
@@ -110,14 +105,13 @@ def filter_files_for_week(
     picked: List[Tuple[str, str, date]] = []
 
     for file_id, name in candidates:
-        m = DATE_RE.fullmatch(name)
+        m = date_re.fullmatch(name)
         if not m:
             continue
         dt = datetime.strptime(m.group(1), "%Y-%m-%d").date()
         if start_date <= dt <= end_date:
             picked.append((file_id, name, dt))
 
-    # Sort by date then name, to match your dedupe script behavior
     picked.sort(key=lambda x: (x[2], x[1]))
     return picked
 
@@ -136,7 +130,10 @@ def download_files(
         local_path = dest_dir / name
         print(f"Downloading {name} ({dt.isoformat()}) -> {local_path}")
 
-        request = service.files().get_media(fileId=file_id)
+        request = service.files().get_media(
+            fileId=file_id,
+            supportsAllDrives=True,
+        )
         fh = io.FileIO(local_path, "wb")
         downloader = MediaIoBaseDownload(fh, request)
 
@@ -144,22 +141,43 @@ def download_files(
         while not done:
             status, done = downloader.next_chunk()
             if status:
-                # You can uncomment if you want progress in logs
-                # print(f"  Download {int(status.progress() * 100)}%.")
+                # Uncomment for progress
+                # print(f"  Download {int(status.progress() * 100)}%")
                 pass
 
     print(f"Downloaded {len(files)} files into {dest_dir}")
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
-        print("Usage: python fetch_google_week_from_drive.py <dest_dir>")
+    """
+    Usage:
+      python fetch_week_from_drive.py <dest_dir> <pattern_stem> <folder_env_var>
+
+    Examples:
+      # Google
+      python fetch_week_from_drive.py weekly_input/google google_alerts_articles GDRIVE_GOOGLE_FOLDER_ID
+
+      # RSS
+      python fetch_week_from_drive.py weekly_input/rss rss_articles GDRIVE_RSS_FOLDER_ID
+    """
+    if len(sys.argv) < 4:
+        print(
+            "Usage: python fetch_week_from_drive.py <dest_dir> <pattern_stem> <folder_env_var>"
+        )
         sys.exit(2)
 
     dest_dir = Path(sys.argv[1]).resolve()
+    pattern_stem = sys.argv[2]
+    folder_env_var = sys.argv[3]
+
+    # Pattern: <pattern_stem>_YYYY-MM-DD.csv
+    date_re = re.compile(
+        rf"{re.escape(pattern_stem)}_(\d{{4}}-\d{{2}}-\d{{2}})\.csv",
+        re.IGNORECASE,
+    )
 
     credentials_path = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS")
-    folder_id = os.environ.get("GDRIVE_GOOGLE_FOLDER_ID")
+    folder_id = os.environ.get(folder_env_var)
 
     if not credentials_path or not Path(credentials_path).is_file():
         print(
@@ -168,7 +186,7 @@ def main() -> None:
         sys.exit(1)
 
     if not folder_id:
-        print("GDRIVE_GOOGLE_FOLDER_ID environment variable is not set.")
+        print(f"{folder_env_var} environment variable is not set.")
         sys.exit(1)
 
     today = date.today()
@@ -182,10 +200,9 @@ def main() -> None:
     service = get_drive_service(credentials_path)
 
     print(f"Listing candidate files in Drive folder {folder_id}...")
-    candidates = list_candidate_files(service, folder_id)
-    print(f"Found {len(candidates)} candidate files with matching pattern.")
+    candidates = list_candidate_files(service, folder_id, date_re)
 
-    week_files = filter_files_for_week(candidates, start_date, end_date)
+    week_files = filter_files_for_week(candidates, date_re, start_date, end_date)
 
     if not week_files:
         print(
