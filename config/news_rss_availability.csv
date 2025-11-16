@@ -120,7 +120,7 @@ france24.com,yes,https://www.france24.com/en/middle-east/rss,x
 france24.com,yes,https://www.france24.com/en/americas/rss,x
 france24.com,yes,https://www.france24.com/en/asia-pacific/rss,x
 freep.com,no,,,,X
-metrotimes.com,yes,https://www.metrotimes.com/detroit/Rss.xml/feed,x
+metrotimes.com,yes,https://www.metrotimes.com/feed/?partner-feed=news-views,x
 freepressjournal.in,yes,https://www.freepressjournal.in/stories.rss,,
 frontiersin.org,yes,https://www.frontiersin.org/news/rss,,from find_more_feeds.py
 ftadviser.com,yes,https://www.ft.com/rss/home
