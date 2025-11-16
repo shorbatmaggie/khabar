@@ -5,18 +5,15 @@ import re
 import sys
 from pathlib import Path
 from datetime import datetime, date, timedelta
-from typing import List, Dict, Tuple, Optional, Set
+from typing import List, Dict, Tuple, Set
 
 # === CONFIG ===
 BASE_DIR = Path(__file__).resolve().parent
 
-# Default input dir for daily digests (used if --input-dir is not provided)
-DEFAULT_INPUT_DIR = BASE_DIR / "data/digests/google_digests"
-
 # Weekly output dir
 WEEKLY_DIR = BASE_DIR / "data/digests/weekly"
 
-# Expected fields/order for CSV (same as your original script)
+# Expected fields/order for CSV 
 FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
 
 # Filenames: google_alerts_articles_YYYY-MM-DD.csv
@@ -32,7 +29,7 @@ def parse_date_str(s: str) -> datetime:
 def most_recent_friday(on_or_before: date) -> date:
     """
     Given a date, return the most recent Friday on or before that date.
-    Python weekday(): Monday=0, ..., Friday=4, Sunday=6.
+    Monday=0, ..., Friday=4, Sunday=6.
     """
     offset = (on_or_before.weekday() - 4) % 7
     return on_or_before - timedelta(days=offset)
@@ -99,7 +96,6 @@ def build_master_csv(csv_files: List[Path], out_path: Path) -> tuple[int, int, i
                 if identity in seen:
                     continue
                 seen.add(identity)
-                # Preserve original values (no stripping on write, only on identity)
                 unique_rows.append({k: row.get(k, "") for k in FIELDS})
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -114,49 +110,21 @@ def build_master_csv(csv_files: List[Path], out_path: Path) -> tuple[int, int, i
     return unique_count, total_rows, dup_count
 
 
-# === ARG PARSING (minimal, non-interactive) ===
-def parse_args(argv: List[str]) -> tuple[Path, Optional[date]]:
-    """
-    Very simple CLI parser for:
-      --input-dir PATH      (optional, default DEFAULT_INPUT_DIR)
-      --week-ending YYYY-MM-DD  (optional, default = most recent Friday <= today)
-    """
-    input_dir: Path = DEFAULT_INPUT_DIR
-    week_ending: Optional[date] = None
-
-    i = 1
-    while i < len(argv):
-        arg = argv[i]
-        if arg == "--input-dir" and i + 1 < len(argv):
-            input_dir = Path(argv[i + 1]).resolve()
-            i += 2
-        elif arg == "--week-ending" and i + 1 < len(argv):
-            try:
-                week_ending = parse_date_str(argv[i + 1]).date()
-            except ValueError:
-                print("Invalid --week-ending date. Use YYYY-MM-DD.")
-                sys.exit(2)
-            i += 2
-        else:
-            print(f"Unknown argument: {arg}")
-            print("Usage: python dedupe_google_weekly.py [--input-dir PATH] [--week-ending YYYY-MM-DD]")
-            sys.exit(2)
-
-    return input_dir, week_ending
-
-
 # === MAIN ===
 def main() -> None:
-    input_dir, week_ending = parse_args(sys.argv)
+    # Require one positional arg: input directory
+    if len(sys.argv) < 2:
+        print("Usage: python dedupe_google_weekly.py <input_dir>")
+        sys.exit(2)
 
+    input_dir = Path(sys.argv[1]).resolve()
     if not input_dir.is_dir():
         print(f"Input directory does not exist or is not a directory: {input_dir}")
         sys.exit(1)
 
-    # Determine week-ending date (Friday) if not provided
+    # Determine week-ending date (Friday): most recent Friday <= today
     today = datetime.now().date()
-    if week_ending is None:
-        week_ending = most_recent_friday(today)
+    week_ending = most_recent_friday(today)
 
     # List candidate CSV files
     csv_entries = list_csv_files_with_dates(input_dir)
@@ -181,7 +149,6 @@ def main() -> None:
 
     csv_unique, csv_total, csv_dups = build_master_csv(csv_inputs, csv_out)
 
-    # Summary
     print(
         f"[CSV] week ending {end_str} | {len(csv_inputs)} files | "
         f"{csv_dups} duplicates out of {csv_total} rows. "
