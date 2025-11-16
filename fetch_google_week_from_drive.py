@@ -80,6 +80,8 @@ def list_candidate_files(
                 spaces="drive",
                 fields="nextPageToken, files(id, name, mimeType)",
                 pageToken=page_token,
+                supportsAllDrives=True,
+                includeItemsFromAllDrives=True,
             )
             .execute()
         )
