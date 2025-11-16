@@ -8,11 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Local destination for downloaded daily CSVs
       WEEKLY_INPUT_DIR: weekly_input/google
-      # Path where we'll write the service account JSON
       GOOGLE_APPLICATION_CREDENTIALS: service_account.json
-      # Drive folder ID for the daily Google CSVs
       GDRIVE_GOOGLE_FOLDER_ID: ${{ secrets.GDRIVE_GOOGLE_FOLDER_ID }}
 
     steps:
@@ -22,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install Python dependencies
         run: |
@@ -35,9 +32,9 @@ jobs:
 
       - name: Write service account JSON
         run: |
-          echo "${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}" > "$GOOGLE_APPLICATION_CREDENTIALS"
-          # Optional sanity check
+          printf '%s' '${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}' > "$GOOGLE_APPLICATION_CREDENTIALS"
           ls -l "$GOOGLE_APPLICATION_CREDENTIALS"
+
 
       - name: Fetch weekly Google CSVs from Drive (Sat–Fri)
         run: |
