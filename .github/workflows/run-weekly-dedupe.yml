@@ -22,15 +22,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: "requirements/upload_digests.txt"
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install \
-            google-api-python-client \
-            google-auth \
-            google-auth-httplib2 \
-            google-auth-oauthlib
+          pip install -r requirements/upload_digests.txt
 
       - name: Write service account JSON
         run: |
