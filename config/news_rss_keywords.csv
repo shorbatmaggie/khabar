@@ -261,6 +261,7 @@ molla
 moral police
 moral policing
 morality police
+ministry&vice
 islam&call to prayer
 islamic&call to prayer
 muslim&call to prayer
@@ -416,30 +417,7 @@ muslims&recite
 muslims&recited
 muslims&reciting
 religious police
-islam&sect
-islamic&sect
-muslim&sect
-muslims&sect
-sunni&sect
-shia&sect
-shi'i&sect
-shiite&sect
-islam&sectarian
-islamic&sectarian
-muslim&sectarian
-muslims&sectarian
-sunni&sectarian
-shia&sectarian
-shi'i&sectarian
-shiite&sectarian
-islam&sects
-islamic&sects
-muslim&sects
-muslims&sects
-sunni&sects
-shia&sects
-shi'i&sects
-shiite&sects
+
 shar'i
 sharia
 sharia-based
@@ -451,28 +429,10 @@ shari'a
 shari'ah
 sharīʿa
 sharī'a
-shi'a
-shi'as
-shi'as'
-shia
-shia's
-shias
-shias'
-shiism
-shi'ism
-shiite
-shi'ite
-shiite's
-shiites
-shiʿi
 shoura
 shukkur
 shura
 shura's
-shuras
-shuras'
-shīʿa
-shī'ī
 sihaq
 islam&slavery
 islamic&slavery
@@ -511,36 +471,37 @@ sufism
 sukuk
 sunnah
 sunna
-sunni
-sunni's
-sunnis
-sunnism
-sunnī
+triple divorce
 talaq
 talaq-e-hasan
-taliban
-taliban-appointed
-taliban's
+taliban&law
+taliban&legal
+taliban&vice
+taliban&censor
+taliban&censorship
+taliban&islam
+taliban&islamic
+taliban&execute
+taliban&executed
+taliban&ban
+taliban&banned
+taliban&prohibit
+taliban&prohibits
+taliban&prohibited
+taliban&punish
+taliban&punishes
+taliban&punished
+taliban&punishment
 ta'zir
 taazir
 tazir
 tazeer
 ta'zeer
 ulama
-ulama's
 ulema
 uloom
+ulum 
 umrah
-un-islamic
-islam&veil
-islamic&veil
-muslim&veil
-muslims&veil
-muslim&veiling
-muslims&veiling
-islam&veiling
-islamic&veiling
-veil ban
 wahhabi
 wahhabism
 wahhab
@@ -805,3 +766,8 @@ nafaqah
 nafaka
 nafakah
 nafkah
+jafari 
+ja'fari
+islamic jurisprudence 
+muslim&jurisprudence
+islam&jurisprudence
