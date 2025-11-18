@@ -186,8 +186,6 @@ islam&clerics
 islam&ruler
 islam&rulers
 ismaili
-jihad
-jihād
 islamic&jurist
 islamic&jurists
 muslim&jurist
@@ -248,16 +246,10 @@ maulvi's
 maulvis
 maulvis'
 mawlawi
-medina
 personal status
+muslim personal law 
+muslim personal laws
 modesty laws
-prophet&mohamad
-prophet&mohamed
-prophet&mohammad
-prophet&mohammed
-mohammedan
-mokhtar
-molla
 moral police
 moral policing
 morality police
@@ -335,9 +327,6 @@ muslim&reverses
 muslim&appeal
 muslim&appealed
 muslim&appeals
-muslim-centered
-muslim-led
-muslim-majority
 muslims&law
 muslims&laws
 muslims&finance
@@ -409,15 +398,7 @@ qazi's
 qazis
 qazis'
 qāḍī
-ramadan
-tajweed
-islamic&recitation
-muslim&recitation
-muslims&recite
-muslims&recited
-muslims&reciting
 religious police
-
 shar'i
 sharia
 sharia-based
@@ -475,6 +456,8 @@ triple divorce
 talaq
 talaq-e-hasan
 taliban&law
+taliban&mandate
+taliban&detain
 taliban&legal
 taliban&vice
 taliban&censor
@@ -771,3 +754,5 @@ ja'fari
 islamic jurisprudence 
 muslim&jurisprudence
 islam&jurisprudence
+islam&ai 
+islamic&ai 
