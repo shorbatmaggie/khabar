@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent
 ARTICLES_DIR = BASE_DIR / "data/digests/rss_digests"
 
 # Expected fields/order
-FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
+FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url"]
 
 PATTERN_STEM = "rss_articles"
 OUTPUT_PREFIX = "deduped_candidate_articles"

@@ -17,7 +17,7 @@ WEEKLY_DIR = BASE_DIR / "data/digests/weekly"
 DEFAULT_INPUT_DIR = BASE_DIR / "data/digests/rss_digests"
 
 # Expected CSV schema (borrowed from local_dedupe_rss.py)
-FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
+FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url"]
 
 # RSS filenames: rss_articles_YYYY-MM-DD.csv
 PATTERN_STEM = "rss_articles"

@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent
 WEEKLY_DIR = BASE_DIR / "data/digests/weekly"
 
 # Expected fields/order for CSV 
-FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url", "in_roundup"]
+FIELDS = ["keywords", "title", "snippet", "date_published", "source_domain", "url"]
 
 # Filenames: google_alerts_articles_YYYY-MM-DD.csv
 PATTERN_STEM = "google_alerts_articles"
