@@ -17,14 +17,10 @@ iddat
 rukhsati
 iddah
 azhar
-blasphemed
-blaspheme
-blasphemes
-blaspheming
-blasphemous
-blasphemy
-burkinis
-burkini
+blasphemy&islam
+blasphemy&islamic
+blasphemy&muslim
+blasphemy&muslims
 burqa
 burqas
 caliph
@@ -89,7 +85,15 @@ fuqaha
 fuqaha's
 gender segregation
 hadith
-hajj
+hajj&law
+hajj@laws
+hajj&legal
+hajj&lawsuit
+hajj&ban
+hajj&banned
+hajj&prohibited
+hajj&prohibit
+hajj&prohibits
 hakim
 hukm
 ahkam
@@ -303,7 +307,6 @@ muslim&banned
 muslim&prohibited
 muslim&prohibit
 muslim&prohibits
-muslim&held
 muslim&holds
 muslim&hold
 muslim&rule
@@ -347,7 +350,6 @@ muslims&banned
 muslims&prohibited
 muslims&prohibit
 muslims&prohibits
-muslims&held
 muslims&holds
 muslims&hold
 muslims&rule
@@ -443,6 +445,16 @@ stoning
 islamic&stone
 muslim&stone
 taliban&stone
+taliban&allow
+taliban&allowed
+taliban&legalize
+taliban&authorize
+islam&authorize
+islam&allows
+islam&condone
+islam&condones
+islam&mandate
+islam&mandates
 islam&stone
 sufi
 sufi's
@@ -453,6 +465,7 @@ sukuk
 sunnah
 sunna
 triple divorce
+muslim&divorce
 talaq
 talaq-e-hasan
 taliban&law
@@ -484,11 +497,15 @@ ulama
 ulema
 uloom
 ulum 
+umrah&law
+umrah&lawsuit
+umrah&legal
+umrah&ban
+umrah&banned
+umrah&prohibit
+umrah&prohibits
+umrah&prohibited
 umrah
-wahhabi
-wahhabism
-wahhab
-wahhabist
 wakaf
 wali
 wali's
@@ -549,7 +566,6 @@ islam&capital punishment
 islamic&capital punishment
 muslim&capital punishment
 muslims&capital punishment
-anti-blashemy 
 mahr
 mehr
 islam&inheritance
@@ -629,9 +645,6 @@ islam&banned
 islam&prohibited
 islam&prohibit
 islam&prohibits
-islam&held
-islam&holds
-islam&hold
 islam&rule
 islam&rules
 islam&ruled
@@ -755,4 +768,11 @@ islamic jurisprudence
 muslim&jurisprudence
 islam&jurisprudence
 islam&ai 
-islamic&ai 
+islamic&ai
+ramadan&law
+ramadan&permitted
+ramadan&ban
+ramadan&banned
+ramadan&prohibit
+ramadan&prohibits
+ramadan&prohibited
