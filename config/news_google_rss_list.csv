@@ -1,18 +1,18 @@
-feed_url,keywords,source
+feed_url,keywords,source, exclusions
 https://www.google.com/alerts/feeds/01549978635682241555/15524956261072249483, site:https://lawbeat.in/ muslim, automatic
 https://www.google.com/alerts/feeds/01549978635682241555/6494971414470436879, site:https://thenigerialawyer.com islam, automatic
 https://www.google.com/alerts/feeds/01549978635682241555/9476175290809345637, site:https://religionunplugged.com/ islam, automatic
-https://www.google.com/alerts/feeds/01549978635682241555/12281012591304275781, mufti -mehbooba, news
-https://www.google.com/alerts/feeds/01549978635682241555/7600496014301796517, imam, news
+https://www.google.com/alerts/feeds/01549978635682241555/12281012591304275781, mufti, news, mehbooba
+https://www.google.com/alerts/feeds/01549978635682241555/7600496014301796517, imam, news, sharjeel
 https://www.google.com/alerts/feeds/01549978635682241555/4883282598214335328, fatwa, news
-https://www.google.com/alerts/feeds/01549978635682241555/5346561406099155042, haram -boko, news
+https://www.google.com/alerts/feeds/01549978635682241555/5346561406099155042, haram, news, boko
 https://www.google.com/alerts/feeds/01549978635682241555/11247692753531422041, qazi court, news 
 https://www.google.com/alerts/feeds/01549978635682241555/17749681507098974581, halal, news
 https://www.google.com/alerts/feeds/01549978635682241555/6588887247169922844, syariah, news
 https://www.google.com/alerts/feeds/01549978635682241555/7800491661237065347, shariah, news
 https://www.google.com/alerts/feeds/01549978635682241555/7576768707606636289, islamic law, news
-https://www.google.com/alerts/feeds/01549978635682241555/12866627061858081517, prophet muhammad, news 
 https://www.google.com/alerts/feeds/01549978635682241555/10461877567437256605, sharia, news
 https://www.google.com/alerts/feeds/01549978635682241555/3046719440972923273, waqf, news
 https://www.google.com/alerts/feeds/01549978635682241555/8316934480600746281, site:https://thelegalaffair.com/ muslim islam, automatic
 https://www.google.com/alerts/feeds/01549978635682241555/12600826689698417689, islamic jurisprudence, news
+https://www.google.com/alerts/feeds/01549978635682241555/4718743771160448786, muslim personal law, news
