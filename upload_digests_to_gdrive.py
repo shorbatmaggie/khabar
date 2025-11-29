@@ -5,7 +5,6 @@ from pathlib import Path
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 
 
@@ -59,13 +58,7 @@ def upload_file(
         )
         for f in existing.get("files", []):
             print(f"🗑️ Deleting existing Drive file with same name: {f['name']} ({f['id']})")
-            try:
-                drive.files().delete(fileId=f["id"]).execute()
-            except HttpError as exc:
-                if exc.resp.status == 404:
-                    print(f"⚠️ File already removed or missing: {f['id']}")
-                else:
-                    raise
+            drive.files().delete(fileId=f["id"]).execute()
 
     file_metadata = {"name": file_name, "parents": [folder_id]}
     media = MediaFileUpload(str(local_path), mimetype=mime_type)
