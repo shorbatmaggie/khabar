@@ -60,9 +60,10 @@ def upload_file(
         for f in existing.get("files", []):
             print(f"🗑️ Deleting existing Drive file with same name: {f['name']} ({f['id']})")
             try:
-                drive.files().delete(fileId=f["id"]).execute()
+                drive.files().delete(fileId=f["id"], supportsAllDrives=True).execute()
             except HttpError as exc:
-                if exc.resp.status == 404:
+                status = getattr(exc.resp, "status", None)
+                if status == 404:
                     print(f"⚠️ File already removed or missing: {f['id']}")
                 else:
                     raise
