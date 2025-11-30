@@ -191,3 +191,30 @@ jobs:
           echo "$files"
 
           python upload_digests_to_gdrive.py $files
+
+  check-friday:
+    runs-on: ubuntu-latest
+    needs:
+      - upload-digests
+    outputs:
+      is_friday: ${{ steps.check.outputs.is_friday }}
+    steps:
+      - name: Check if today is Friday (UTC)
+        id: check
+        run: |
+          dow="$(date -u +%u)"  # 1=Mon ... 5=Fri ... 7=Sun
+          echo "Day-of-week (UTC): $dow"
+          if [ "$dow" -eq 5 ]; then
+            echo "is_friday=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_friday=false" >> "$GITHUB_OUTPUT"
+          fi
+    
+  run-weekly-dedupe:
+    needs:
+      - upload-digests
+      - check-friday
+    if: needs.check-friday.outputs.is_friday == 'true'
+    uses: ./.github/workflows/run-weekly-dedupe.yml 
+    secrets: inherit
+
